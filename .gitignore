@@ -28,3 +28,6 @@ pip-log.txt
 
 #emacs swap files 
 *~
+
+#sqlite database
+straymapperdb
