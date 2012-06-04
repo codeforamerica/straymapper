@@ -1,4 +1,4 @@
-from django.db import models
+from django.contrib.gis.db import models
 
 
 class Animal(models.Model): 
@@ -29,6 +29,10 @@ class Animal(models.Model):
     intake_total = models.IntegerField('Intake Total') 
     #Animal ID looks like A163112, we want this as our primary key 
     animal_id = models.CharField('Animal ID', max_length=255, primary_key='True')
+
+    geometry = models.PointField(srid=4326)
+
+    objects = models.GeoManager()
 
     def __unicode__(self): 
         return self.animal_id
