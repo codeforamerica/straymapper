@@ -8,13 +8,19 @@
   <meta name="author" content="">
   {% bootstrap_stylesheet_tag %}
   <style type="text/css">
-        body {
-            padding-top: 60px;
-        }
-    </style>
+    body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+    {% block extra_css %}
+    {% endblock %}
+  </style>
+
   <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  {% block extra_head %}
+  {% endblock %}
 </head>
 
 <body>
