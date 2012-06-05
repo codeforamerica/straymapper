@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'bootstrap_toolkit',
 
     'animals',
+    'django_extensions',
 )
 
 # A sample logging configuration. The only tangible logging
