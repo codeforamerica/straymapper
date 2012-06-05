@@ -37,9 +37,10 @@
           lng: {{animal.geometry.x}},
           title: '{{animal.animal_id}}',
           infoWindow: {
-            content: '<p>{{animal.animal_id}}</p>'
+          content: "<p>{{animal.animal_id}}<br>Intake Date: {{animal.intake_date}}<br>Location: {{animal.location}}<br>Intake Condition: {{animal.intake_condition}}<br>Type: {{animal.animal_type}}<br>Sex: {{animal.sex}}<br>Age: {{animal.age_in_days}}<br>Color: {{animal.color}}<br>Breed: {{animal.breed}}<br>Intake Total: {{animal.intake_total}}<br><img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{anima.animal_id}}&LOCATION=ASTN'></p>"
           }
         });
+
       {% endfor %}
 
     });
