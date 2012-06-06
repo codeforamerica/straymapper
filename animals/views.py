@@ -17,6 +17,9 @@ def index(request, template_name='animals/index.html'):
           animal_type = form.cleaned_data['animal_type']
           if animal_type:
             animal_list = animal_list.filter(animal_type=animal_type)
+          sex = form.cleaned_data['sex']
+          if sex:
+            animal_list = animal_list.filter(sex=sex)
     else:
         form = AnimalSearchForm()
         animal_list = Animal.objects.all()
