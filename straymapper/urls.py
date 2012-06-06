@@ -5,12 +5,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'straymapper.views.home', name='home'),
-    # url(r'^straymapper/', include('straymapper.foo.urls')),
-
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^animals/', include('animals.urls'))
+    url(r'^animals/', include('animals.urls')),
+
+    url(r'^$', 'animals.views.index', name='home'),
 )
