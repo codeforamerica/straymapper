@@ -3,10 +3,14 @@ import csv
 from datetime import datetime, date
 from geopy import geocoders
 
+from django.conf import settings
+
 from animals.models import Animal
 
+
 def run():
-    contents = csv.reader(open("%s/../fixtures/CurrentMap.csv" % os.path.dirname(__file__)), dialect='excel', delimiter=',')
+    csv_file = settings.map_path('fixtures') + 'CurrentMap.csv'
+    contents = csv.reader(csv_file, dialect='excel', delimiter=',')
     header = contents.next()
     g = geocoders.Google('AIzaSyAZoNPSlRTETltbmJvgYYqol0SLAVBgKs')
     for row in contents:
