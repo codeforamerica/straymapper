@@ -1,5 +1,6 @@
 from django.contrib.gis.db import models
 
+
 class Animal(models.Model):
     intake_date = models.DateField('Intake Date')
     location = models.CharField('Location', max_length=255)
