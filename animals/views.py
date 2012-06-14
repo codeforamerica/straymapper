@@ -14,21 +14,21 @@ def index(request, template_name='animals/index.html'):
         if form.is_valid():
             intake_condition = form.cleaned_data['intake_condition']
             if intake_condition:
-                alist = animal_list.filter(intake_condition=intake_condition)
+                alist = alist.filter(intake_condition=intake_condition)
             intake_date = form.cleaned_data['intake_date']
             if intake_date:
-                alist = animal_list.filter(intake_date=intake_date)
+                alist = alist.filter(intake_date=intake_date)
             animal_type = form.cleaned_data['animal_type']
             if animal_type:
-                alist = animal_list.filter(animal_type=animal_type)
+                alist = alist.filter(animal_type=animal_type)
             sex = form.cleaned_data['sex']
             if sex:
-                alist = animal_list.filter(sex=sex)
+                alist = alist.filter(sex=sex)
     else:
         form = AnimalSearchForm()
         alist = Animal.objects.all()
 
     context['form'] = form
-    context['animal_list'] = alist
+    context['alist'] = alist
     return render_to_response(template_name, context,
         context_instance=RequestContext(request))
