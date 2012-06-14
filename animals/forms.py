@@ -2,13 +2,15 @@ from datetime import date
 
 from django import forms
 
+
 class AnimalSearchForm(forms.Form):
     animal_type_choices = (
         ('', 'All'),
         ('CAT', 'Cat'),
         ('DOG', 'Dog'),
     )
-    animal_type = forms.ChoiceField(required=False, choices=animal_type_choices)
+    animal_type = forms.ChoiceField(required=False,
+        choices=animal_type_choices)
     sex_choices = (
         ('', 'Any'),
         ('M', 'Male'),
@@ -29,5 +31,5 @@ class AnimalSearchForm(forms.Form):
         ('PREGNANT', 'Pregnant'),
         ('OTHER', 'Other'),
     )
-    intake_condition = forms.ChoiceField(required=False, choices=intake_condition_choices)
-
+    intake_condition = forms.ChoiceField(required=False,
+        choices=intake_condition_choices)

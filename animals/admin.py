@@ -1,6 +1,5 @@
-from django.contrib.gis import admin 
+from django.contrib.gis import admin
 
-from animals.models import Animal 
+from animals.models import Animal
 
-admin.site.register(Animal) 
-
+admin.site.register(Animal)
