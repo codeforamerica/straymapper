@@ -29,6 +29,6 @@ def index(request, template_name='animals/index.html'):
         alist = Animal.objects.all()
 
     context['form'] = form
-    context['alist'] = animal_list
+    context['animal_list'] = alist
     return render_to_response(template_name, context,
         context_instance=RequestContext(request))
