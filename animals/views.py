@@ -26,7 +26,7 @@ def index(request, template_name='animals/index.html'):
                 alist = alist.filter(sex=sex)
     else:
         form = AnimalSearchForm()
-        alist = Animal.objects.all()
+        alist = Animal.objects.all()[:20]
 
     context['form'] = form
     context['alist'] = alist
