@@ -57,11 +57,19 @@
 
 {% block content %}
 <div class="hero-unit">
+<div class="row"> 
+  <div class="span6">
   <p>The quick brown fox jumped over the lazy dog.</p>
   <form action="" method="POST">{% csrf_token %}
     {{form|as_bootstrap}}
     <input type="submit" value="Search" class="btn btn-primary">
   </form>
+</div> 
+<div class="span6"> 
+Hello
+</div>
+</div>
+
 </div>
 <div class="row">
   <div class="span12">
