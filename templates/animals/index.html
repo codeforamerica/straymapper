@@ -36,7 +36,7 @@
         lng: -97.691219
       });
 
-      {% for animal in animal_list %}
+      {% for animal in alist %}
         map.addMarker({
           lat: {{animal.geometry.y}},
           lng: {{animal.geometry.x}},
