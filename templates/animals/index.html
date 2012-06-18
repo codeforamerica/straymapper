@@ -57,20 +57,48 @@
 
 {% block content %}
 <div class="hero-unit">
-<div class="row"> 
-  <div class="span6">
+<h1>StrayMapper </h1>
   <p>The quick brown fox jumped over the lazy dog.</p>
+</div>
+<div class="row"> 
+  <div class="span4">
   <form action="" method="POST">{% csrf_token %}
     {{form|as_bootstrap}}
     <input type="submit" value="Search" class="btn btn-primary">
   </form>
 </div> 
-<div class="span6"> 
-Hello
+<div class="span8"> 
+Search Results<br /><br />
+<table border="1" cellpadding="10">
+<tr> 
+  <td>Intake Date 
+    </td>
+<td>Color
+    </td>
+<td>Breed 
+    </td>
+<td>Type 
+    </td>
+<td>Sex 
+    </td>
+  {% for animal in alist %} 
+  <tr> 
+    <td>{{animal.intake_date}}
+    </td>
+    <td>{{animal.color}}
+    </td>
+    <td>{{animal.breed}}
+    </td>
+    <td>{{animal.animal_type}}
+    </td>
+    <td>{{animal.sex}}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 </div>
 </div>
 
-</div>
 <div class="row">
   <div class="span12">
     <div id="map"></div>
