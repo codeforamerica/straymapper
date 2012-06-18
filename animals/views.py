@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
@@ -20,7 +21,10 @@ def index(request, template_name='animals/index.html'):
                 alist = alist.filter(intake_date=intake_date)
             animal_type = form.cleaned_data['animal_type']
             if animal_type:
-                alist = alist.filter(animal_type=animal_type)
+                if animal_type == 'M':
+                    alist = alist.filter(Q(animal_type='M') | Q(animal_type='N'))
+                elif animal_type == 'F':
+                    alist = alist.filter(Q(animal_type='F') | Q(animal_type='S'))
             sex = form.cleaned_data['sex']
             if sex:
                 alist = alist.filter(sex=sex)
