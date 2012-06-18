@@ -21,18 +21,19 @@ def index(request, template_name='animals/index.html'):
                 alist = alist.filter(intake_date=intake_date)
             animal_type = form.cleaned_data['animal_type']
             if animal_type:
-                if animal_type == 'M':
-                    alist = alist.filter(Q(animal_type='M') | Q(animal_type='N'))
-                elif animal_type == 'F':
-                    alist = alist.filter(Q(animal_type='F') | Q(animal_type='S'))
+                alist = alist.filter(animal_type=animal_type)
             sex = form.cleaned_data['sex']
             if sex:
-                alist = alist.filter(sex=sex)
+                if sex == 'M':
+                    alist = alist.filter(Q(sex='M') | Q(sex='N'))
+                elif sex == 'F':
+                    alist = alist.filter(Q(sex='F') | Q(sex='S'))
     else:
         form = AnimalSearchForm()
         alist = Animal.objects.all()
 
     context['form'] = form
     context['alist'] = alist
+    context['results_count'] = alist.count()
     return render_to_response(template_name, context,
         context_instance=RequestContext(request))
