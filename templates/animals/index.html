@@ -84,7 +84,7 @@ Search Results<br /><br />
     </td>
   {% for animal in alist|slice:":5" %} 
   <tr> 
-    <td>{{animal.intake_date}}
+    <td>{{animal.intake_date|date:"n/j/o"}}
     </td>
     <td>{{animal.color}}
     </td>
