@@ -1,6 +1,9 @@
 language: python
   - "2.7"
+env:
+  - DJANGO=1.4
 install:
+  - pip install -q Django==$DJANGO --use-mirrors
   - pip install -r requirements.txt --use-mirrors
   - pip install -q -e . --use-mirrors
 script:
