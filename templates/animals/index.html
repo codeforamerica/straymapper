@@ -57,15 +57,19 @@
 
 {% block content %}
 <div class="hero-unit">
+<<<<<<< HEAD
 <h1>StrayMapper </h1>
   <p>The quick brown fox jumped over the lazy dog.</p>
 </div>
 <div class="row"> 
   <div class="span4">
+=======
+>>>>>>> upstream/master
   <form action="" method="POST">{% csrf_token %}
     {{form|as_bootstrap}}
     <input type="submit" value="Search" class="btn btn-primary">
   </form>
+<<<<<<< HEAD
 </div> 
 <div class="span8"> 
 Search Results<br /><br />
@@ -97,6 +101,9 @@ Search Results<br /><br />
   {% endfor %}
 </table>
 </div>
+=======
+  <div>{{results_count}} animals displayed</div>
+>>>>>>> upstream/master
 </div>
 
 <div class="row">
@@ -104,5 +111,5 @@ Search Results<br /><br />
     <div id="map"></div>
   </div>
 </div>
-<script src="http://codeforamerica.github.com/cfa_banner/banner.js?type=corner&forkUrl=https://github.com/codeforamerica/straymapper" id="cfa_banner_script"></script>
+<script src="http://codeforamerica.github.com/cfa_banner/banner.js?type=corner-right&forkUrl=https://github.com/codeforamerica/straymapper" id="cfa_banner_script"></script>
 {% endblock %}

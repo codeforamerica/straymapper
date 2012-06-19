@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from datetime import datetime, date, timedelta
@@ -28,8 +29,15 @@ def index(request, template_name='animals/index.html'):
                 alist = alist.filter(animal_type=animal_type)
             sex = form.cleaned_data['sex']
             if sex:
+<<<<<<< HEAD
                 alist = alist.filter(sex=sex)
             alist= alist[:5]
+=======
+                if sex == 'M':
+                    alist = alist.filter(Q(sex='M') | Q(sex='N'))
+                elif sex == 'F':
+                    alist = alist.filter(Q(sex='F') | Q(sex='S'))
+>>>>>>> upstream/master
     else:
         form = AnimalSearchForm()
         alist_all = Animal.objects.all()
@@ -37,6 +45,10 @@ def index(request, template_name='animals/index.html'):
 
     context['form'] = form
     context['alist'] = alist
+<<<<<<< HEAD
     
+=======
+    context['results_count'] = alist.count()
+>>>>>>> upstream/master
     return render_to_response(template_name, context,
         context_instance=RequestContext(request))

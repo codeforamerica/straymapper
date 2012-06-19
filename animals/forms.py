@@ -15,8 +15,6 @@ class AnimalSearchForm(forms.Form):
         ('', 'Any'),
         ('M', 'Male'),
         ('F', 'Female'),
-        ('S', 'Spayed'),
-        ('N', 'Neutered'),
     )
     sex = forms.ChoiceField(required=False, choices=sex_choices)
     intake_date = forms.DateField(required=False)

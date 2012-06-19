@@ -3,10 +3,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{% block page_title %}Stray Pet Mapper{% endblock %}</title>
+  <title>{% block page_title %}Stray Mapper{% endblock %}</title>
   <meta name="description" content="">
   <meta name="author" content="">
-  {% bootstrap_stylesheet_tag %}
+  <link rel="stylesheet" href="{{STATIC_URL}}/css/bootstrap.readable.css">
   <style type="text/css">
     body {
         padding-top: 60px;
@@ -41,7 +41,7 @@
   <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
           <div class="container">
-              <a class="brand" href="">Stray Pet Mapper</a>
+              <a class="brand" href="">Stray Mapper</a>
               <ul class="nav">
                   <li><a href="" class="">Home</a></li>
                   <li><a href="">About</a></li>
