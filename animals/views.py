@@ -15,7 +15,7 @@ def index(request, template_name='animals/index.html'):
 
     if request.method == 'POST':
         form = AnimalSearchForm(request.POST)
-        alist = Animal.objects.all()     
+        alist = Animal.objects.all()
 
         if form.is_valid():
             intake_condition = form.cleaned_data['intake_condition']
@@ -30,13 +30,19 @@ def index(request, template_name='animals/index.html'):
             sex = form.cleaned_data['sex']
             if sex:
 <<<<<<< HEAD
+<<<<<<< HEAD
                 alist = alist.filter(sex=sex)
             alist= alist[:5]
 =======
+=======
+>>>>>>> upstream/master
                 if sex == 'M':
                     alist = alist.filter(Q(sex='M') | Q(sex='N'))
                 elif sex == 'F':
                     alist = alist.filter(Q(sex='F') | Q(sex='S'))
+<<<<<<< HEAD
+>>>>>>> upstream/master
+=======
 >>>>>>> upstream/master
     else:
         form = AnimalSearchForm()
@@ -46,7 +52,11 @@ def index(request, template_name='animals/index.html'):
     context['form'] = form
     context['alist'] = alist
 <<<<<<< HEAD
+<<<<<<< HEAD
     
+=======
+    context['results_count'] = alist.count()
+>>>>>>> upstream/master
 =======
     context['results_count'] = alist.count()
 >>>>>>> upstream/master

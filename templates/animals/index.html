@@ -58,11 +58,17 @@
 {% block content %}
 <div class="hero-unit">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> upstream/master
 <h1>StrayMapper </h1>
   <p>The quick brown fox jumped over the lazy dog.</p>
 </div>
 <div class="row"> 
   <div class="span4">
+<<<<<<< HEAD
+=======
+>>>>>>> upstream/master
 =======
 >>>>>>> upstream/master
   <form action="" method="POST">{% csrf_token %}
@@ -70,6 +76,10 @@
     <input type="submit" value="Search" class="btn btn-primary">
   </form>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  <div>{{results_count}} animals displayed</div>
+>>>>>>> upstream/master
 </div> 
 <div class="span8"> 
 Search Results<br /><br />
@@ -85,9 +95,9 @@ Search Results<br /><br />
     </td>
 <td>Sex 
     </td>
-  {% for animal in alist %} 
+  {% for animal in alist|slice:":5" %} 
   <tr> 
-    <td>{{animal.intake_date}}
+    <td>{{animal.intake_date|date:"n/j/o"}}
     </td>
     <td>{{animal.color}}
     </td>
@@ -101,8 +111,11 @@ Search Results<br /><br />
   {% endfor %}
 </table>
 </div>
+<<<<<<< HEAD
 =======
   <div>{{results_count}} animals displayed</div>
+>>>>>>> upstream/master
+=======
 >>>>>>> upstream/master
 </div>
 
