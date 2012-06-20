@@ -9,6 +9,7 @@ before_install:
   - sudo apt-get install libspatialite2
 install:
   - pip install -q Django==$DJANGO --use-mirrors
+  - pip install git+git://github.com/tinio/pysqlite.git@extension-enabled#egg=pysqlite
   - pip install -r requirements.txt --use-mirrors
 script:
   - python manage.py test

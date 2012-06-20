@@ -3,5 +3,5 @@ django-bootstrap-toolkit==2.5.3
 django-extensions==0.9
 geopy==0.94.2
 pep8==0.6.1
--e git+git://github.com/tinio/pysqlite.git@extension-enabled#egg=pysqlite
+pysqlite==2.6.3
 wsgiref==0.1.2
