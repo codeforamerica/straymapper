@@ -43,7 +43,7 @@
           title: '{{animal.animal_id}}',
           icon: '/static/images/small-marker.png',
           infoWindow: {
-          content: "<p>{{animal.animal_id}}<br>Intake Date: {{animal.intake_date}}<br>Location: {{animal.location}}<br>Intake Condition: {{animal.intake_condition}}<br>Type: {{animal.animal_type}}<br>Sex: {{animal.sex}}<br>Age: {{animal.age_in_days}}<br>Color: {{animal.color}}<br>Breed: {{animal.breed}}<br>Intake Total: {{animal.intake_total}}<br><img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{anima.animal_id}}&LOCATION=ASTN'></p>"
+          content: "<table cellspacing='50%'><tr><td><p>{{animal.color|lower}}<br>{{animal.breed|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><p align='right'><img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'><br />{{animal.animal_id}}</p></td></tr></table>"
           }
         });
 
@@ -70,7 +70,7 @@
 </div> 
 <div class="span8"> 
 Search Results<br /><br />
-<table border="1" cellpadding="10">
+<table class="table" cellpadding="10">
 <tr> 
   <td>Intake Date 
     </td>
