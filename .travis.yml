@@ -12,4 +12,4 @@ install:
   - pip install git+git://github.com/tinio/pysqlite.git@extension-enabled#egg=pysqlite
   - pip install -r requirements.txt --use-mirrors
 script:
-  - python manage.py test
+  - python manage.py test animals
