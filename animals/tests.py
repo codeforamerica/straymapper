@@ -25,8 +25,8 @@ class AnimalsViewsTestCase(TestCase):
             animal_type='CAT',
             sex='M',
             age=4763,
-            color='TORBIE',
-            breed='DOMESTIC SH',
+            name='Pepper',
+            description='gray schnauzer min',
             intake_total=2,
             animal_id='A163112',
             geometry='POINT (-97.7932349999999957 30.1910789999999984)'
