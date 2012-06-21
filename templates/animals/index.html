@@ -43,7 +43,7 @@
           title: '{{animal.animal_id}}',
           icon: '/static/images/small-marker.png',
           infoWindow: {
-          content: "<table cellspacing='50%'><tr><td><p>{{animal.color|lower}}<br>{{animal.breed|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><p align='right'><img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'><br />{{animal.animal_id}}</p></td></tr></table>"
+          content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><p align='right'><img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'><br />{{animal.animal_id}}</p></td></tr></table>"
           }
         });
 
@@ -86,9 +86,9 @@ Search Results<br /><br />
   <tr> 
     <td>{{animal.intake_date|date:"n/j/o"}}
     </td>
-    <td>{{animal.color|lower}}
+    <td>{{animal.name|lower}}
     </td>
-    <td>{{animal.breed|lower}}
+    <td>{{animal.description|lower}}
     </td>
     <td>{{animal.animal_type|lower}}
     </td>
