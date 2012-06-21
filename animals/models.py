@@ -5,7 +5,13 @@ class Animal(models.Model):
     intake_date = models.DateField('Intake Date')
     location = models.CharField('Location', max_length=255)
     intake_condition = models.CharField('Intake Condition', max_length=255)
-    animal_type = models.CharField('Animal Type', max_length=255)
+    TYPE_CHOICES = ( 
+        (u'PUPPY', u'Puppy'), 
+        (u'KITTEN', u'Kitten'), 
+        (u'DOG', u'Dog'), 
+        (u'CAT', u'Cat'),
+    )
+    animal_type = models.CharField('Animal Type', max_length=255, choices=TYPE_CHOICES)
     GENDER_CHOICES = (
         (u'M', u'Male'),
         (u'F', u'Female'),
