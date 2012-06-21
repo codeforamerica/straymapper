@@ -13,5 +13,8 @@ install:
   - pip install -q Django==$DJANGO --use-mirrors
   - pip install git+git://github.com/tinio/pysqlite.git@extension-enabled#egg=pysqlite
   - pip install -r requirements.txt --use-mirrors
+  - wget http://www.gaia-gis.it/spatialite-2.4.0/init_spatialite-2.4.sql.gz
+  - gunzip init_spatialite-2.4.sql.gz
+  - spatialite straymapperdb < init_spatialite-2.4.sql
 script:
   - python manage.py test animals
