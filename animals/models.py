@@ -5,23 +5,23 @@ class Animal(models.Model):
     intake_date = models.DateField('Intake Date')
     location = models.CharField('Location', max_length=255)
     intake_condition = models.CharField('Intake Condition', max_length=255)
-    TYPE_CHOICES = ( 
-        (u'PUPPY', u'Puppy'), 
-        (u'KITTEN', u'Kitten'), 
-        (u'DOG', u'Dog'), 
+    TYPE_CHOICES = (
+        (u'PUPPY', u'Puppy'),
+        (u'KITTEN', u'Kitten'),
+        (u'DOG', u'Dog'),
         (u'CAT', u'Cat'),
     )
     animal_type = models.CharField('Animal Type', max_length=255, choices=TYPE_CHOICES)
     GENDER_CHOICES = (
         (u'M', u'Male'),
         (u'F', u'Female'),
-        (u'S', u'Spayed'),
-        (u'N', u'Neutered'),
+        (u'U', u'Unknown'),
     )
     sex = models.CharField('Sex', max_length=2, choices=GENDER_CHOICES)
+    spayed = models.BooleanField('Spayed or Neutered', default=False)
     age = models.IntegerField('Age in Days')
-    color = models.CharField('Color', max_length=255)
-    breed = models.CharField('Breed', max_length=255)
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
     intake_total = models.IntegerField('Intake Total')
     animal_id = models.CharField('Animal ID', max_length=255,
         primary_key='True')
