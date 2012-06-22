@@ -5,8 +5,10 @@ from geopy import geocoders
 
 from animals.models import Animal
 
+
 def run():
-    contents = csv.reader(open("%s/../fixtures/DataSet1.csv" % os.path.dirname(__file__)), dialect='excel', delimiter=',')
+    csv_file = open("%s/../fixtures/DataSet1.csv" % os.path.dirname(__file__))
+    contents = csv.reader(csv_file, dialect='excel', delimiter=',')
     header = contents.next()
     g = geocoders.Google('AIzaSyAZoNPSlRTETltbmJvgYYqol0SLAVBgKs')
     for row in contents:
@@ -33,7 +35,7 @@ def run():
                 a.sex = sex[row[5]]
                 a.spayed = True if row[6] == 'YES' else False
                 a.name = row[7]
-                a.age = int(float(row[8].replace(',','')))
+                a.age = int(float(row[8].replace(',', '')))
                 a.description = row[9]
                 a.intake_total = 1
                 a.geometry = "POINT (%s %s)" % (point[1], point[0])
