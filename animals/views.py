@@ -9,9 +9,7 @@ from animals.forms import AnimalSearchForm
 
 def index(request, template_name='animals/index.html'):
     context = {}
-    #The following line is commented out because we do not have data from 2 weeks ago
-    #startdate = datetime.today() - timedelta(days=14)
-    startdate = datetime.today() - timedelta(days=24)
+    startdate = datetime.today() - timedelta(days=14)
 
     if request.method == 'POST':
         form = AnimalSearchForm(request.POST)
@@ -36,7 +34,7 @@ def index(request, template_name='animals/index.html'):
     else:
         form = AnimalSearchForm()
         alist_all = Animal.objects.all()
-        alist= alist_all.filter(intake_date__gte=startdate)
+        alist = alist_all.filter(intake_date__gte=startdate)
 
     context['form'] = form
     context['alist'] = alist
