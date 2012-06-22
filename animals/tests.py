@@ -44,5 +44,6 @@ class AnimalsViewsTestCase(TestCase):
         self.assertContains(resp, "white catahoula", status_code=200)
 
     def test_markers_displayed(self):
-        resp = self.client.get(reverse('animals_index'))
-        self.assertContains(resp, "map.addMarker", count=100, status_code=200)
+        resp = self.client.post(reverse('animals_index'),
+            {'intake_date': '2012-06-04'})
+        self.assertContains(resp, "map.addMarker", count=4, status_code=200)
