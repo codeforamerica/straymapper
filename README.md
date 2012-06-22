@@ -1,4 +1,4 @@
-# Stray Pet Mapper   [![Build Status](https://secure.travis-ci.org/tinio/straymapper.png)](http://travis-ci.org/tinio/straymapper)
+# Stray Pet Mapper   [![Build Status](https://secure.travis-ci.org/codeforamerica/straymapper.png)](http://travis-ci.org/codeforamerica/straymapper)
 Reunite more stray animals with their human companions
 
 
