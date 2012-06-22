@@ -11,7 +11,8 @@ class Animal(models.Model):
         (u'DOG', u'Dog'),
         (u'CAT', u'Cat'),
     )
-    animal_type = models.CharField('Animal Type', max_length=255, choices=TYPE_CHOICES)
+    animal_type = models.CharField('Animal Type', max_length=255,
+        choices=TYPE_CHOICES)
     GENDER_CHOICES = (
         (u'M', u'Male'),
         (u'F', u'Female'),
