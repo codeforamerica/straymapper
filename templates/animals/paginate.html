@@ -3,13 +3,13 @@
 <div class="pagination">
   {% block previouslink %}
   <li {% if not page_obj.has_previous %}class="disabled"{% endif %}>
-      <a href="?page{{ page_suffix }}={{ page_obj.previous_page_number }}{{ getvars }}">{{ previous_link_decorator|safe }}{% trans "previous" %}</a>
+      <a href="{% if page_obj.has_previous %}?page{{ page_suffix }}={{ page_obj.previous_page_number }}{{ getvars }}{% else %}#{% endif %}">{{ previous_link_decorator|safe }}{% trans "previous" %}</a>
   </li>
   {% endblock previouslink %}
 
   {% block nextlink %}
   <li {% if not page_obj.has_next %}class="disabled"{% endif %}>
-      <a href="?page{{ page_suffix }}={{ page_obj.next_page_number }}{{ getvars }}">{% trans "next" %}{{ next_link_decorator|safe }}</a>
+      <a href="{% if page_obj.has_next %}?page{{ page_suffix }}={{ page_obj.next_page_number }}{{ getvars }}{% else %}#{% endif %}">{% trans "next" %}{{ next_link_decorator|safe }}</a>
   </li>
   {% endblock nextlink %}
 </div>
