@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% load bootstrap_toolkit %}
+
+{% block extra_css %}
+  #map{
+    display: block;
+    width: 95%;
+    height: 400px;
+    margin: 0 auto;
+    -moz-box-shadow: 0px 5px 20px #ccc;
+    -webkit-box-shadow: 0px 5px 20px #ccc;
+    box-shadow: 0px 5px 20px #ccc;
+  }
+
+  /* GMaps bug- https://github.com/twitter/bootstrap/issues/2410 */
+  #map img {
+    max-width: none;
+  }
+{% endblock %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{{STATIC_URL}}jquery-ui-1.8.21.custom/css/cupertino/jquery-ui-1.8.21.custom.css">
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="{{STATIC_URL}}jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script type="text/javascript" src='https://raw.github.com/HPNeo/gmaps/master/gmaps.js'></script>
+  <script type="text/javascript">
+    var map;
+    $(document).ready(function(){
+      map = new GMaps({
+        div: '#map',
+        zoom: 11,
+        lat: 30.264998,
+        lng: -97.691219
+      });
+
+      {% for animal in alist %}
+        map.addMarker({
+          lat: {{animal.geometry.y}},
+          lng: {{animal.geometry.x}},
+          title: '{{animal.animal_id}}',
+          icon: '/static/images/small-marker.png',
+          infoWindow: {
+          content: "<p>{{animal.animal_id}}<br>Intake Date: {{animal.intake_date}}<br>Location: {{animal.location}}<br>Intake Condition: {{animal.intake_condition}}<br>Type: {{animal.animal_type}}<br>Sex: {{animal.sex}}<br>Age: {{animal.age_in_days}}<br>Color: {{animal.color}}<br>Breed: {{animal.breed}}<br>Intake Total: {{animal.intake_total}}<br><img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{anima.animal_id}}&LOCATION=ASTN'></p>"
+          }
+        });
+
+      {% endfor %}
+
+      $('#id_intake_date').datepicker({dateFormat: 'yy-mm-dd'});
+
+    });
+  </script>
+{% endblock %}
+
+{% block content %}
+<div class="hero-unit">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> upstream/master
+<h1>StrayMapper </h1>
+  <p>The quick brown fox jumped over the lazy dog.</p>
+</div>
+<div class="row"> 
+  <div class="span4">
+<<<<<<< HEAD
+=======
+>>>>>>> upstream/master
+=======
+>>>>>>> upstream/master
+  <form action="" method="POST">{% csrf_token %}
+    {{form|as_bootstrap}}
+    <input type="submit" value="Search" class="btn btn-primary">
+  </form>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  <div>{{results_count}} animals displayed</div>
+>>>>>>> upstream/master
+</div> 
+<div class="span8"> 
+Search Results<br /><br />
+<table border="1" cellpadding="10">
+<tr> 
+  <td>Intake Date 
+    </td>
+<td>Color
+    </td>
+<td>Breed 
+    </td>
+<td>Type 
+    </td>
+<td>Sex 
+    </td>
+  {% for animal in alist|slice:":5" %} 
+  <tr> 
+    <td>{{animal.intake_date|date:"n/j/o"}}
+    </td>
+    <td>{{animal.color}}
+    </td>
+    <td>{{animal.breed}}
+    </td>
+    <td>{{animal.animal_type}}
+    </td>
+    <td>{{animal.sex}}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+<<<<<<< HEAD
+=======
+  <div>{{results_count}} animals displayed</div>
+>>>>>>> upstream/master
+=======
+>>>>>>> upstream/master
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div id="map"></div>
+  </div>
+</div>
+<script src="http://codeforamerica.github.com/cfa_banner/banner.js?type=corner-right&forkUrl=https://github.com/codeforamerica/straymapper" id="cfa_banner_script"></script>
+{% endblock %}
