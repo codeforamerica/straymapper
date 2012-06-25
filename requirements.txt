@@ -1,7 +1,10 @@
 Django==1.4
+Fabric==1.4.2
 django-bootstrap-toolkit==2.5.3
 django-extensions==0.9
 geopy==0.94.2
 pep8==0.6.1
+pycrypto==2.6
 pysqlite==2.6.3
+ssh==1.7.14
 wsgiref==0.1.2
