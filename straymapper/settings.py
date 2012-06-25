@@ -139,9 +139,10 @@ INSTALLED_APPS = (
     'django.contrib.gis',
 
     'bootstrap_toolkit',
+    'django_extensions',
+    'devtools',
 
     'animals',
-    'django_extensions',
 )
 
 # A sample logging configuration. The only tangible logging
