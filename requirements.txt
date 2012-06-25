@@ -3,6 +3,7 @@ Fabric==1.4.2
 django-bootstrap-toolkit==2.5.3
 django-extensions==0.9
 geopy==0.94.2
+linaro-django-pagination==2.0.2
 pep8==0.6.1
 pycrypto==2.6
 pysqlite==2.6.3
