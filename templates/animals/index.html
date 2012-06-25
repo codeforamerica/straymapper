@@ -62,7 +62,7 @@
 </div>
 <div class="row"> 
   <div class="span4">
-  <form action="" method="POST">{% csrf_token %}
+  <form class="well form-inline" action="" method="POST">{% csrf_token %}
     {{form|as_bootstrap}}
     <input type="submit" value="Search" class="btn btn-primary">
   </form>

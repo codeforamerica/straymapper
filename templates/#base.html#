@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load bootstrap_toolkit %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block page_title %}Stray Pet Mapper{% endblock %}</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  {% bootstrap_stylesheet_tag %}
+  <style type="text/css">
+    body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+    {% block extra_css %}
+    {% endblock %}
+  </style>
+
+  <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  {% block extra_head %}
+  {% endblock %}
+</head>
+
+<body>
+  <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+          <div class="container">
+              <a class="brand" href="">Stray Pet Mapper</a>
+              <ul class="nav">
+                  <li><a href="" class="">Home</a></li>
+                  <li><a href="">About</a></li>
+                  <li><a href=""> --- WORK IN PROGRESS --- </a></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
+  <div class>
+
+  <div class="container">
+
+    {% block content %}
+      Empty page
+    {% endblock %}
+
+      <p><hr></p>
+
+      <footer class="row">
+	<div class="span6" style="text-align:left">
+          <p><b>Contact the Austin Animal Shelter:</b></p>
+	  <p>7201 Levander Loop 
+	    Austin, TX 78702 </p>
+	  <p>Call 3-1-1 for animal issues.</p>
+        </div>
+	<br /> 
+
+        <div class="span6" style="text-align:right">
+          <p>This is <a href="https://github.com/codeforamerica/straymapper">straymapper</a></p>
+        </div>
+        <div class="span6" style="text-align:right">
+          <p>
+            &copy; <a href="http://twitter.com/codeforamerica">Code for America</a> 2012
+            |
+            <a href="https://raw.github.com/codeforamerica/cfa_template/master/LICENSE.mkd">LICENSE</a>
+          </p>
+        </div>
+	 
+	    
+      </footer>
+
+  </div> <!-- container -->
+</body>
+</html>
