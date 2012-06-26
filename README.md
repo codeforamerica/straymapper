@@ -12,6 +12,19 @@ You can see a running version of the application at
 
 [demo]: http://straymapper.com/
 
+## <a name="environment"></a>Development Environment
+
+### Ubuntu Environment
+Instructions for creating a development environment for Ubuntu Linux.  This has been tested using Ubuntu 12.04.
+    #Initial libraries needed
+    $sudo apt-get install build-essential git-core python-software-properties python-dev python-pip python-virtualenv
+
+    #SQLite Dependencies
+    $sudo apt-get install sqlite3 libsqlite3-dev
+
+    #Spatialite Dependencies
+    $sudo apt-get install libproj-dev proj-bin libgeos-dev libgdal-dev libspatialite3 libspatialite-dev spatialite-bin
+
 ## <a name="installation"></a>Installation
     git clone git://github.com/codeforamerica/straymapper.git
     cd straymapper
