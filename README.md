@@ -16,6 +16,7 @@ You can see a running version of the application at
 
 ### Ubuntu Environment
 Instructions for creating a development environment for Ubuntu Linux.  This has been tested using Ubuntu 12.04.
+    
     #Initial libraries needed
     $sudo apt-get install build-essential git-core python-software-properties python-dev python-pip python-virtualenv
 
@@ -24,6 +25,21 @@ Instructions for creating a development environment for Ubuntu Linux.  This has 
 
     #Spatialite Dependencies
     $sudo apt-get install libproj-dev proj-bin libgeos-dev libgdal-dev libspatialite3 libspatialite-dev spatialite-bin
+
+### Mac Environment
+Instructions for creating a development environment on Mac.  This requires that [Homebrew] is installed.     
+    
+    $ brew install sqlite3
+    $ brew isntall geos
+    $ brew install proj
+    $ brew install gdal
+    $ brew install libspatialite
+
+**Note: Without Homebrew**
+Install the correct libspatialite library from [Spatialite] for your Mac.
+
+[Homebrew]: http://mxcl.github.com/homebrew/
+[Spatialite]: http://www.gaia-gis.it/spatialite-2.3.1/binaries.html
 
 ## <a name="installation"></a>Installation
     git clone git://github.com/codeforamerica/straymapper.git
