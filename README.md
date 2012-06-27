@@ -36,6 +36,7 @@ Instructions for creating a development environment on Mac.  This requires that 
     $ brew install libspatialite
 
 **Note: Without Homebrew**
+
 Install the correct libspatialite library from [Spatialite] for your Mac.
 
 [Homebrew]: http://mxcl.github.com/homebrew/
