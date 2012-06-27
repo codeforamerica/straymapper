@@ -60,52 +60,55 @@
 <div class="hero-unit">
 <h1>StrayMapper </h1>
   <p>The quick brown fox jumped over the lazy dog.</p>
-</div>
-<div class="row"> 
-  <div class="span4">
-  <form class="form-inline" action="" method="POST">{% csrf_token %}
-    {{form|as_bootstrap}}
-    <input type="submit" value="Search" class="btn btn-primary">
-  </form>
-  <div>{{results_count}} animals displayed</div>
-</div> 
-<div class="span8"> 
+ </div> 
+<div class="row">
+<div class="span3">
 Search Results<br /><br />
 <table class="table" cellpadding="10">
-<tr> 
-  <td>Intake Date 
-    </td>
-<td>Color
-    </td>
-<td>Breed 
-    </td>
-<td>Type 
-    </td>
-<td>Sex 
-    </td>
   {% autopaginate alist 5 as paginated_alist %}
   {% for animal in paginated_alist %} 
   <tr> 
-    <td>{{animal.intake_date|date:"n/j/o"}}
-    </td>
-    <td>{{animal.name|lower}}
-    </td>
-    <td>{{animal.description|lower}}
-    </td>
-    <td>{{animal.animal_type|lower}}
-    </td>
-    <td>{{animal.sex}}
+    <td>{{animal.description|lower}}<br /> 
+      {{animal.animal_type|lower}}<br /> 
+      {{animal.sex}}<br /> 
+      {{animal.intake_date|date:"n/j/o"}}
     </td>
   </tr>
   {% endfor %}
 </table>
 {% paginate using "animals/paginate.html" %}
 </div>
+<div class="span9"> 
+<form class="well form-inline" action="" method="POST">{% csrf_token %} 
+<table>
+<tr>
+  <td><label>Animal Type: </label>
+    {{form.animal_type}}</td>
+  <td>
+  <label>Sex: </label> 
+    {{form.sex}}
+  </td>
+  <td><label>Intake date:</label> 
+    {{form.intake_date}}
+    </td>
+  <td> 
+    <label>Intake condition:</label>
+    {{form.intake_condition}} 
+  </td>
+</tr>
+  <td> 
+    <input type="submit" value="Search" class="btn btn-primary"> 
+    </td>
+</table>      
+</form>
+ 
+  <div>{{results_count}} animals displayed</div>
+  <br /> 
+  <div id="map"></div>
 </div>
-
 <div class="row">
   <div class="span12">
-    <div id="map"></div>
+    
   </div>
 </div>
 <script src="http://codeforamerica.github.com/cfa_banner/banner.js?type=corner-right&forkUrl=https://github.com/codeforamerica/straymapper" id="cfa_banner_script"></script>
