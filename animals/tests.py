@@ -18,7 +18,7 @@ class AnimalsViewsTestCase(TestCase):
         self.assertTrue('form' in resp.context)
         self.assertTrue('alist' in resp.context)
         self.assertTrue('results_count' in resp.context)
-        self.assertNotContains(resp, '0 animals displayed', status_code=200)
+        self.assertNotContains(resp, '^0 animals displayed', status_code=200)
 
     def test_type_search(self):
         resp = self.client.post(reverse('animals_index'),
