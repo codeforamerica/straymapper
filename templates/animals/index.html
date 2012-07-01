@@ -27,8 +27,21 @@
   <script type="text/javascript" src="{{STATIC_URL}}jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <script type="text/javascript" src='https://raw.github.com/HPNeo/gmaps/master/gmaps.js'></script>
+  <script src="http://staging.tokbox.com/v0.91/js/TB.min.js"></script>
   <script type="text/javascript">
+    // GMaps vars
     var map;
+
+    // OpenTok vars
+    var apiKey = '16434561';
+    var sessionId = '1_MX4xMjMyMDgxfjcyLjUuMTY3LjE0OH4yMDEyLTA3LTAxIDIyOjUxOjE4LjQ4NjEyNCswMDowMH4wLjMwNTI3MzcwMjgxOX4';
+    var token = 'devtoken'; 
+    var session = TB.initSession(sessionId);
+
+    function sessionConnectedHandler(event) {
+        alert('Hello world. I am connected to OpenTok :).');
+    }
+
     $(document).ready(function(){
       map = new GMaps({
         div: '#map',
@@ -47,10 +60,14 @@
           content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><p align='right'><img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'><br />{{animal.animal_id}}</p></td></tr></table>"
           }
         });
-
       {% endfor %}
 
       $('#id_intake_date').datepicker({dateFormat: 'yy-mm-dd'});
+
+      // OpenTok
+      TB.setLogLevel(TB.DEBUG); // Set this for helpful debugging messages in console
+      session.addEventListener('sessionConnected', sessionConnectedHandler);
+      session.connect(apiKey, token);
 
     });
   </script>
