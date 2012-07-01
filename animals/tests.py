@@ -10,11 +10,15 @@ class AnimalsViewsTestCase(TestCase):
     fixtures = ['animals_testdata.json']
 
     def test_index(self):
+        """
+	Checks for 200 status and that expected variables in context and that some 
+	animals are displayed by default.
+        """
         resp = self.client.get(reverse('animals_index'))
-        self.assertEqual(resp.status_code, 200)
         self.assertTrue('form' in resp.context)
         self.assertTrue('alist' in resp.context)
         self.assertTrue('results_count' in resp.context)
+        self.assertNotContains(resp, '0 animals displayed', status_code=200)
 
     def test_type_search(self):
         resp = self.client.post(reverse('animals_index'),
