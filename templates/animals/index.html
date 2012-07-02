@@ -29,19 +29,30 @@
   <script type="text/javascript" src='https://raw.github.com/HPNeo/gmaps/master/gmaps.js'></script>
   <script src="http://staging.tokbox.com/v0.91/js/TB.min.js"></script>
   <script type="text/javascript">
-    // GMaps vars
-    var map;
-
-    // OpenTok vars
+    // OpenTok
     var apiKey = '16434561';
     var sessionId = '1_MX4xMjMyMDgxfjcyLjUuMTY3LjE0OH4yMDEyLTA3LTAxIDIyOjUxOjE4LjQ4NjEyNCswMDowMH4wLjMwNTI3MzcwMjgxOX4';
     var token = 'devtoken'; 
-    var session = TB.initSession(sessionId);
 
-    function sessionConnectedHandler(event) {
-        alert('Hello world. I am connected to OpenTok :).');
+    TB.setLogLevel(TB.DEBUG); // Set this for helpful debugging messages in console
+
+    var session = TB.initSession(sessionId);
+    session.addEventListener('sessionConnected', sessionConnectedHandler);
+
+    function connectOpenTok() {
+        session.connect(apiKey, token);
     }
 
+    var publisher;
+
+    function sessionConnectedHandler(event) {
+        // Put my webcam in a div
+        publisher = TB.initPublisher('myPublisherDiv');
+        // Send my stream to the session
+        session.publish(publisher);
+    }
+
+    var map;
     $(document).ready(function(){
       map = new GMaps({
         div: '#map',
@@ -57,17 +68,12 @@
           title: '{{animal.animal_id}}',
           icon: '/static/images/small-marker.png',
           infoWindow: {
-          content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><p align='right'><img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'><br />{{animal.animal_id}}</p></td></tr></table>"
+content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><p align='right'><img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'><br />{{animal.animal_id}}</p></td></tr></table><button onclick='connectOpenTok()'>View Animal</button>"
           }
         });
       {% endfor %}
 
       $('#id_intake_date').datepicker({dateFormat: 'yy-mm-dd'});
-
-      // OpenTok
-      TB.setLogLevel(TB.DEBUG); // Set this for helpful debugging messages in console
-      session.addEventListener('sessionConnected', sessionConnectedHandler);
-      session.connect(apiKey, token);
 
     });
   </script>
@@ -77,7 +83,11 @@
 <div class="hero-unit">
 <h1>StrayMapper </h1>
   <p>The quick brown fox jumped over the lazy dog.</p>
- </div> 
+
+  <div id="myPublisherDiv"></div>
+  </div> 
+
+
 <div class="row">
 <div class="span3">
 Search Results<br /><br />
