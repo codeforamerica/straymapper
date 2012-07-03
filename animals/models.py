@@ -24,8 +24,7 @@ class Animal(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     intake_total = models.IntegerField('Intake Total')
-    animal_id = models.CharField('Animal ID', max_length=255,
-        primary_key='True')
+    animal_id = models.CharField('Animal ID', max_length=255)
     geometry = models.PointField(srid=4326)
 
     objects = models.GeoManager()
