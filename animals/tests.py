@@ -11,8 +11,8 @@ class AnimalsViewsTestCase(TestCase):
 
     def test_index(self):
         """
-	Checks for 200 status and that expected variables in context and that some 
-	animals are displayed by default.
+        Checks for 200 status and that expected variables in context and that some 
+        animals are displayed by default.
         """
         resp = self.client.get(reverse('animals_index'))
         self.assertTrue('form' in resp.context)
@@ -50,4 +50,4 @@ class AnimalsViewsTestCase(TestCase):
     def test_markers_displayed(self):
         resp = self.client.post(reverse('animals_index'),
             {'intake_date': '2012-06-04'})
-        self.assertContains(resp, "map.addMarker", count=4, status_code=200)
+        self.assertContains(resp, "map.addMarker", count=43, status_code=200)
