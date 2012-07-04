@@ -78,7 +78,7 @@ Here are some ways *you* can contribute:
 * [financially][]
 
 [locales]: https://github.com/codeforamerica/cfa_template/tree/master/config/locales
-[issues]: https://github.com/codeforamerica/cfa_template/issues
+[issues]: https://github.com/codeforamerica/straymapper/issues
 [financially]: https://secure.codeforamerica.org/page/contribute
 
 ## <a name="issues"></a>Submitting an Issue
