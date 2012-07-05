@@ -39,5 +39,6 @@ def index(request, template_name='animals/index.html'):
     context['form'] = form
     context['alist'] = alist
     context['results_count'] = alist.count()
+    context['startdate'] = startdate;
     return render_to_response(template_name, context,
         context_instance=RequestContext(request))
