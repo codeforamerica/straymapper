@@ -67,7 +67,7 @@ Here are some ways *you* can contribute:
 * by using alpha, beta, and prerelease versions
 * by reporting bugs
 * by suggesting new features
-* by [translating to a new language][locales]
+* by translating to a new language
 * by writing or editing documentation
 * by writing specifications
 * by writing code (**no patch is too small**: fix typos, add comments, clean up
@@ -77,7 +77,6 @@ Here are some ways *you* can contribute:
 * by reviewing patches
 * [financially][]
 
-[locales]: https://github.com/codeforamerica/cfa_template/tree/master/config/locales
 [issues]: https://github.com/codeforamerica/straymapper/issues
 [financially]: https://secure.codeforamerica.org/page/contribute
 
