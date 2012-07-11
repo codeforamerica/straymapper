@@ -63,11 +63,19 @@
  </div> 
 <div class="row">
 <div class="span3">
-Search Results<br /><br />
+Search Results
+<br />
+<br /> 
 <table class="table" cellpadding="10">
   {% autopaginate alist 5 as paginated_alist %}
-  {% for animal in paginated_alist %} 
+  {% for animal in paginated_alist %}
   <tr> 
+      <td><ul class="thumbnails">
+	  <li class="span2">
+	  <img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'> 
+	  </li>
+	  </ul>
+      </td>
     <td>{{animal.description|lower}}<br /> 
       {{animal.animal_type|lower}}<br /> 
       {{animal.sex}}<br /> 
