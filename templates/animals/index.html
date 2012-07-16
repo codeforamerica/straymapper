@@ -50,75 +50,74 @@
 
       {% endfor %}
 
-      $('#id_intake_date').datepicker({dateFormat: 'yy-mm-dd'});
-
+      $('#id_intake_date_start').datepicker({dateFormat: 'yy-mm-dd'});
+      $('#id_intake_date_end').datepicker({dateFormat: 'yy-mm-dd'});
+    
     });
   </script>
 {% endblock %}
 
-{% block content %}
-<div class="hero-unit" style="background-image: url(http://oddanimals.com/images/lime-cat.jpg)">
-<h1>StrayMapper </h1>
-  <p>The quick brown fox jumped over the lazy dog.</p>
- </div> 
-<div class="row">
-<div class="span3">
-Search Results
-<br />
-<br /> 
-<table class="table" cellpadding="10">
-  {% autopaginate alist 5 as paginated_alist %}
-  {% for animal in paginated_alist %}
-  <tr> 
-      <td><ul class="thumbnails">
-	  <li class="span2">
-	  <img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'> 
-	  </li>
-	  </ul>
-      </td>
-    <td>{{animal.description|lower}}<br /> 
-      {{animal.animal_type|lower}}<br /> 
-      {{animal.sex}}<br /> 
-      {{animal.intake_date|date:"n/j/o"}}
-    </td>
-  </tr>
-  {% endfor %}
-</table>
-{% paginate using "animals/paginate.html" %}
-</div>
-<div class="span9"> 
-<form class="well form-inline" action="" method="POST">{% csrf_token %} 
-<table>
-<tr>
-  <td><label>Animal Type: </label>
-    {{form.animal_type}}</td>
-  <td>
-  <label>Sex: </label> 
-    {{form.sex}}
-  </td>
-  <td><label>Intake date:</label> 
-    {{form.intake_date_start}}
-    {{form.intake_date_end}}
-    </td>
-  <td> 
-    <label>Intake condition:</label>
-    {{form.intake_condition}} 
-  </td>
-</tr>
-  <td> 
-    <input type="submit" value="Search" class="btn btn-primary"> 
-    </td>
-</table>      
-</form>
- 
-  <div>{{results_count}} animals to display since {{ startdate.date }}</div>
-  <br /> 
-  <div id="map"></div>
-</div>
-<div class="row">
-  <div class="span12">
-    
-  </div>
-</div>
-<script src="http://codeforamerica.github.com/cfa_banner/banner.js?type=corner-right&forkUrl=https://github.com/codeforamerica/straymapper" id="cfa_banner_script"></script>
-{% endblock %}
+  {% block content %}
+  <div class="hero-unit" style="background-color: #a85708">
+    <h1>StrayMapper </h1>
+    <p>Reuniting lost pets with their human companions in Austin, TX.</p>
+  </div> 
+  <div class="row">
+    <div class="span3">
+      Search Results
+      <br />
+      <br /> 
+      <table class="table" cellpadding="10">
+	{% autopaginate alist 5 as paginated_alist %}
+	{% for animal in paginated_alist %}
+	<tr> 
+	  <td><ul class="thumbnails">
+	      <li class="span2">
+		<img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'> 
+	      </li>
+	    </ul>
+	  </td>
+	  <td>{{animal.description|lower}}<br /> 
+	    {{animal.animal_type|lower}}<br /> 
+	    {{animal.sex}}<br /> 
+	    {{animal.intake_date|date:"n/j/o"}}
+	  </td>
+	</tr>
+	{% endfor %}
+      </table>
+      {% paginate using "animals/paginate.html" %}
+    </div>
+    <div class="span9"> 
+      <form class="well form-inline" action="" method="POST">{% csrf_token %} 
+	<table cellpadding="5">
+	  <tr>
+	    <td>Animal Type:</td> 
+	    <td>Sex:</td> 
+	    <td>Intake Date:</td>
+	    <td></td>
+	    <td>Intake Condition</td> 
+	  </tr> 
+	  <tr> 
+	    <td>{{form.animal_type}}</td>
+	    <td>{{form.sex}}</td>
+	    <td>{{form.intake_date_start}}</td>
+	    <td>{{form.intake_date_end}}</td>
+	    <td>{{form.intake_condition}} </td>
+	  </tr>
+	  </table>
+	    <input type="submit" value="Search" class="btn btn-primary"> 
+	    <br /> 
+	    <label class="checkbox">
+	      <input type="checkbox">Only see animals with images
+	      </label>
+      </form>      
+      <div>{{results_count}} animals to display since {{ startdate.date }}</div>
+      <br /> 
+      <div id="map"></div>
+    </div>
+    <div class="row">
+      <div class="span12">
+      </div>
+    </div>
+    <script src="http://codeforamerica.github.com/cfa_banner/banner.js?type=corner-right&forkUrl=https://github.com/codeforamerica/straymapper" id="cfa_banner_script"></script>
+    {% endblock %}

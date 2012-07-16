@@ -19,8 +19,10 @@ class AnimalSearchForm(forms.Form):
     )
     sex = forms.ChoiceField(required=False, choices=sex_choices,
         widget=forms.Select(attrs={'class': 'span2'}))
-    intake_date_start = forms.DateField(required=False)
-    intake_date_end = forms.DateField(required=False)
+    intake_date_start = forms.DateField(required=False,
+        widget=forms.TextInput(attrs={'class': 'input-small', 'type': 'text'}))
+    intake_date_end = forms.DateField(required=False,
+        widget=forms.TextInput(attrs={'class': 'input-small', 'type': 'text'}))
     intake_condition_choices = (
         ('', 'All'),
         ('NORMAL', 'Normal'),
