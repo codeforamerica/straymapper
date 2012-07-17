@@ -21,7 +21,7 @@ class Animal(models.Model):
     sex = models.CharField('Sex', max_length=2, choices=GENDER_CHOICES)
     spayed = models.BooleanField('Spayed or Neutered', default=False)
     age = models.IntegerField('Age in Days')
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255)
     intake_total = models.IntegerField('Intake Total')
     animal_id = models.CharField('Animal ID', max_length=255)

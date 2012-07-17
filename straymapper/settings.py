@@ -153,7 +153,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'devtools',
     'linaro_django_pagination',
-    'imagekit', 
+    'imagekit',
 
     'animals',
 )
