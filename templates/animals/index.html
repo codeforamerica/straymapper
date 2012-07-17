@@ -44,7 +44,7 @@
           title: '{{animal.animal_id}}',
           icon: '/static/images/small-marker.png',
           infoWindow: {
-          content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><p align='right'><img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'><br />{{animal.animal_id}}</p></td></tr></table>"
+          content: "{% load bootstrap_toolkit %}<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><p align='right'><ul class='thumbnails'><li class='span2'><a class='thumbnail'><img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'></a></li></ul><br />{{animal.animal_id}}</p></td></tr></table>"
           }
         });
 
@@ -58,7 +58,7 @@
 {% endblock %}
 
   {% block content %}
-  <div class="hero-unit" style="background-color: #a85708">
+  <div class="hero-unit" style="background-color: #de6f15">
     <h1>StrayMapper </h1>
     <p>Reuniting lost pets with their human companions in Austin, TX.</p>
   </div> 
@@ -111,7 +111,8 @@
 	      <input type="checkbox">Only see animals with images
 	      </label>
       </form>      
-      <div>{{results_count}} animals to display since {{ startdate.date }}</div>
+      <div>{{results_count}} animals to display since {{ startdate|date }}
+      to {{ enddate|date }}</div>
       <br /> 
       <div id="map"></div>
     </div>

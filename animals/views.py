@@ -10,6 +10,7 @@ from animals.forms import AnimalSearchForm
 def index(request, template_name='animals/index.html'):
     context = {}
     startdate = datetime.today() - timedelta(days=14)
+    enddate = datetime.today()
 
     if request.method == 'POST':
         form = AnimalSearchForm(request.POST)
@@ -26,8 +27,10 @@ def index(request, template_name='animals/index.html'):
                                      intake_date__lte=intake_date_end)
             elif intake_date_start:
                 alist = alist.filter(intake_date__gte=intake_date_start)
+                startdate = intake_date_start
             elif intake_date_end:
                 alist = alist.filter(intake_date__lte=intake_date_end)
+                enddate = intake_date_end
             animal_type = form.cleaned_data['animal_type']
             if animal_type:
                 alist = alist.filter(animal_type=animal_type)
@@ -46,5 +49,6 @@ def index(request, template_name='animals/index.html'):
     context['alist'] = alist
     context['results_count'] = alist.count()
     context['startdate'] = startdate
+    context['enddate'] = enddate
     return render_to_response(template_name, context,
         context_instance=RequestContext(request))
