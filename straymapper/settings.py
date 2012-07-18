@@ -154,6 +154,7 @@ INSTALLED_APPS = (
     'devtools',
     'linaro_django_pagination',
     'imagekit',
+    'storages',
 
     'animals',
 )
