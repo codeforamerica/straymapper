@@ -12,12 +12,11 @@ def run():
         animal_id = row[3] 
         s = '~/michelle/work/CfA/Images/' + animal_id + '.jpg' 
 
-        if open(s, 'rb').exists(): 
-            f = open(s, 'rb')
-            a = Animal.objects.filter(animal_id=animal_id)
-            a.photo = f 
-
-            print "appended photo to animal %s" % animal_id 
-
-        else: 
-            pass 
+        try: 
+            with open(s, 'rb') as f: 
+                a = Animal.objects.filter(animal_id=animal_id)
+                a.photo = f 
+                print "appended photo to animal %s" % animal_id 
+        
+        except IOError as e: 
+            print "missing " + animal_id
