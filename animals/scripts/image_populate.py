@@ -4,7 +4,7 @@ import csv
 from animals.models import Animal 
 
 def run(): 
-    csv_file = open("%s/../fixtures/DataSet1.csv" % os.path.dirname(__file__)) 
+    csv_file = open("%s/../fixtures/dataset_072012.csv" % os.path.dirname(__file__)) 
     contents = csv.reader(csv_file, dialect='excel', delimiter=',') 
     header = contents.next() 
     
@@ -16,7 +16,7 @@ def run():
             with open(s, 'rb') as f: 
                 a = Animal.objects.filter(animal_id=animal_id)
                 a.photo = f 
-                print "appended photo to animal %s" % animal_id 
+                print "appended photo to animal %s" %animal_id 
         
         except IOError as e: 
             print "missing " + animal_id
