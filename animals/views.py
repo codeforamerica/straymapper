@@ -9,14 +9,14 @@ from animals.forms import AnimalSearchForm
 
 def index(request, template_name='animals/index.html'):
     context = {}
-    startdate = datetime.today() - timedelta(days=14)
-    enddate = datetime.today()
 
     if request.method == 'POST':
         form = AnimalSearchForm(request.POST)
         alist = Animal.objects.all()
 
         if form.is_valid():
+            startdate = datetime.today() - timedelta(days=14)
+            enddate = datetime.today()
             intake_condition = form.cleaned_data['intake_condition']
             if intake_condition:
                 alist = alist.filter(intake_condition=intake_condition)
@@ -41,6 +41,8 @@ def index(request, template_name='animals/index.html'):
                 elif sex == 'F':
                     alist = alist.filter(Q(sex='F') | Q(sex='S'))
     else:
+        startdate = datetime.today() - timedelta(days=14)
+        enddate = datetime.today()
         form = AnimalSearchForm()
         alist_all = Animal.objects.all()
         alist = alist_all.filter(intake_date__gte=startdate)

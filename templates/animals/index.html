@@ -113,8 +113,7 @@
 	      <input type="checkbox">Only see animals with images
 	      </label>
       </form>      
-      <div>{{results_count}} animals to display since {{ startdate|date }}
-      to {{ enddate|date }}</div>
+      <div>{{results_count}} animals to display from {{ form.intake_date_start.value }}  to {{ form.intake_date_end.value }}</div>
       <br /> 
       <div id="map"></div>
     </div>
