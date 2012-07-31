@@ -36,7 +36,8 @@ class AnimalsViewsTestCase(TestCase):
 
     def test_date_search(self):
         resp = self.client.post(reverse('animals_index'),
-            {'intake_date': '2012-06-04'})
+            {'intake_date_start': '2012-06-04',
+             'intake_date_end': '2012-06-04'})
         self.assertContains(resp, "6/4/2012")
         self.assertContains(resp, "chalupa")
         self.assertContains(resp, "white rat terrier", status_code=200)
@@ -50,5 +51,6 @@ class AnimalsViewsTestCase(TestCase):
 
     def test_markers_displayed(self):
         resp = self.client.post(reverse('animals_index'),
-            {'intake_date': '2012-06-04'})
+            {'intake_date_start': '2012-06-04',
+             'intake_date_end': '2012-06-04'})
         self.assertContains(resp, "map.addMarker", count=43, status_code=200)
