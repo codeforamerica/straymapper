@@ -39,5 +39,6 @@ def run():
                 a.description = row[9]
                 a.intake_total = 1
                 a.geometry = "POINT (%s %s)" % (point[1], point[0])
+                a.photo = ''
                 a.save()
                 print a
