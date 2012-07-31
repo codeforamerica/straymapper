@@ -12,7 +12,9 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
-MANAGERS = ADMINS DATABASES = {
+MANAGERS = ADMINS 
+
+DATABASES = {
     'default': {
         # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'ENGINE': 'django.contrib.gis.db.backends.spatialite',
