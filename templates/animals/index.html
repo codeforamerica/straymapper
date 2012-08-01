@@ -29,6 +29,15 @@
   <script type="text/javascript" src='https://raw.github.com/HPNeo/gmaps/master/gmaps.js'></script>
   <script type="text/javascript">
     var map;
+    var prev_mark_num = 0;
+
+    function openMarkerInfo(count, page) {
+      map.markers[prev_mark_num]['infoWindow'].close(map.map, map.markers[prev_mark_num]);
+      mark_num = ((page - 1) * 5) + count;
+      map.markers[mark_num]['infoWindow'].open(map.map, map.markers[mark_num]);
+      prev_mark_num = mark_num;
+    }
+
     $(document).ready(function(){
       map = new GMaps({
         div: '#map',
@@ -52,7 +61,7 @@
 
       $('#id_intake_date_start').datepicker({dateFormat: 'yy-mm-dd'});
       $('#id_intake_date_end').datepicker({dateFormat: 'yy-mm-dd'});
-    
+
     });
   </script>
 {% endblock %}
@@ -64,24 +73,25 @@
       <br />
       <br /> 
       <table class="table" cellpadding="10">
-	{% autopaginate alist 5 as paginated_alist %}
-	{% for animal in paginated_alist %}
-	<tr> 
-	  <td><ul class="thumbnails">
-	      <li class="span2">
-		{{animal.photo}} 
-		{{animal.thumbnail}}
-		<img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'> 
-	      </li>
-	    </ul>
-	  </td>
-	  <td>{{animal.description|lower}}<br /> 
-	    {{animal.animal_type|lower}}<br /> 
-	    {{animal.sex}}<br /> 
-	    {{animal.intake_date|date:"n/j/o"}}
-	  </td>
-	</tr>
-	{% endfor %}
+        {% autopaginate alist 5 as paginated_alist %}
+            {% for animal in paginated_alist %}
+            <tr onclick="openMarkerInfo({{forloop.counter0}}, {{page_obj.number}});"> 
+              <td><ul class="thumbnails">
+                  <li class="span2">
+                {{animal.photo}} 
+                {{animal.thumbnail}}
+                <img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'> 
+                  </li>
+                </ul>
+              </td>
+              <td>{{animal.description|lower}}<br /> 
+                {{animal.animal_type|lower}}<br /> 
+                {{animal.sex}}<br /> 
+                {{animal.intake_date|date:"n/j/o"}}
+              </td>
+            </tr>
+            </a>
+            {% endfor %}
       </table>
       {% paginate using "animals/paginate.html" %}
     </div>
