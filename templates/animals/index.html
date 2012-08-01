@@ -88,7 +88,7 @@
       {% paginate using "animals/paginate.html" %}
     </div>
     <div class="span9"> 
-      <form class="well form-inline" action="" method="POST">{% csrf_token %} 
+    <form class="well form-inline" action="{% url home %}" method="POST">{% csrf_token %} 
 	<table cellpadding="5">
 	  <tr>
 	    <td>Animal Type:</td> 
