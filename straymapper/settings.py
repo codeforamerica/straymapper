@@ -1,5 +1,6 @@
 import os
 
+from S3 import CallingFormat
 
 def map_path(directory_name):
     return os.path.join(os.path.dirname(__file__) + '/../',
@@ -11,8 +12,7 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
-
-MANAGERS = ADMINS
+MANAGERS = ADMINS 
 
 DATABASES = {
     'default': {
@@ -30,6 +30,12 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '') 
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '') 
+AWS_STORAGE_BUCKET_NAME = 'citypetz'
+AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

@@ -49,7 +49,7 @@ def index(request, template_name='animals/index.html'):
                 alist = alist.filter(Q(sex='F') | Q(sex='S'))
     else:
         alist = alist.filter(intake_date__gte=startdate)
-
+        
     context['form'] = form
     context['alist'] = alist
     context['results_count'] = alist.count()

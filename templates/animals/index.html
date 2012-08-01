@@ -73,6 +73,8 @@
 	<tr> 
 	  <td><ul class="thumbnails">
 	      <li class="span2">
+		{{animal.photo}} 
+		{{animal.thumbnail}}
 		<img src='http://www.petharbor.com/get_image.asp?RES=Thumb&ID={{animal.animal_id}}&LOCATION=ASTN'> 
 	      </li>
 	    </ul>
@@ -111,8 +113,7 @@
 	      <input type="checkbox">Only see animals with images
 	      </label>
       </form>      
-      <div>{{results_count}} animals to display since {{ startdate|date }}
-      to {{ enddate|date }}</div>
+      <div>{{results_count}} animals to display from {{ form.intake_date_start.value }}  to {{ form.intake_date_end.value }}</div>
       <br /> 
       <div id="map"></div>
     </div>
