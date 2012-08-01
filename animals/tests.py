@@ -25,8 +25,13 @@ class AnimalsViewsTestCase(TestCase):
         resp = self.client.post(reverse('animals_index'),
             {'animal_type': 'CAT'})
         self.assertContains(resp, "5/31/2012")
-        self.assertContains(resp, "cypress")
         self.assertContains(resp, "brn tabby domestic sh", status_code=200)
+
+    def test_paginated_type_search(self):
+        self.client.post(reverse('animals_index'), {'animal_type': 'CAT'})
+        resp = self.client.get('%s?page=2' % reverse('animals_index'))
+        self.assertContains(resp, "6/2/2012", count=5)
+        self.assertContains(resp, "calico domestic sh", status_code=200)
 
     def test_sex_search(self):
         resp = self.client.post(reverse('animals_index'), {'sex': 'M'})
