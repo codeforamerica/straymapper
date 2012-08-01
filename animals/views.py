@@ -17,7 +17,7 @@ def index(request, template_name='animals/index.html'):
         form = AnimalSearchForm(request.POST)
         request.session['post_data'] = request.POST.copy() 
     else:
-        post_data = request.session['post_data']
+        post_data = request.session.get('post_data', None)
         if post_data:
             form = AnimalSearchForm(post_data)
         else:
