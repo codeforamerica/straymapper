@@ -58,10 +58,6 @@
 {% endblock %}
 
 {% block content %}
-  <div class="hero-unit" style="background-color: #de6f15">
-    <h1>StrayMapper </h1>
-    <p>Reuniting lost pets with their human companions in Austin, TX.</p>
-  </div> 
   <div class="row">
     <div class="span3">
       Search Results
@@ -90,7 +86,7 @@
       {% paginate using "animals/paginate.html" %}
     </div>
     <div class="span9"> 
-    <form class="well form-inline" action="{% url home %}" method="POST">{% csrf_token %} 
+    <form class="well form-inline" action="{% url animals_index %}" method="POST">{% csrf_token %} 
 	<table cellpadding="5">
 	  <tr>
 	    <td>Animal Type:</td> 
