@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from datetime import datetime, date, timedelta
@@ -6,6 +7,21 @@ from datetime import datetime, date, timedelta
 from animals.models import Animal
 from animals.forms import AnimalSearchForm
 
+def process_data(request):
+    if request.method == 'POST':
+        sender = request.POST.get('sender')
+        print 'sender: %s' % sender
+        recipient = request.POST.get('recipient')
+        print 'recipient: %s' % recipient
+        subject = request.POST.get('subject')
+        print 'subject: %s' % subject
+
+        for key in request.FILES:
+            data_file = request.FILES[key]
+            print data_file
+
+    print 'done'
+    return HttpResponse('cool')
 
 def index(request, template_name='animals/index.html'):
     context = {}
