@@ -7,7 +7,7 @@ from animals.models import Animal
 
 
 def run():
-    csv_file = open("%s/../fixtures/dataset_072012.csv" % os.path.dirname(__file__))
+    csv_file = open("%s/../fixtures/DataSet1.csv" % os.path.dirname(__file__))
     contents = csv.reader(csv_file, dialect='excel', delimiter=',')
     header = contents.next()
     g = geocoders.Google('AIzaSyAZoNPSlRTETltbmJvgYYqol0SLAVBgKs')

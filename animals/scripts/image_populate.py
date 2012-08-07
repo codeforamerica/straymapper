@@ -1,5 +1,7 @@
 import os 
 import csv 
+from django.core.files.storage import default_storage 
+from django.core.files.images import ImageFile 
 
 from animals.models import Animal 
 
@@ -10,13 +12,18 @@ def run():
     
     for row in contents: 
         animal_id = row[3] 
-        s = '~/michelle/work/CfA/Images/' + animal_id + '.jpg' 
+        print animal_id 
+        s = '/home/michelle/work/CfA/Images/' + animal_id + '.jpg' 
 
         try: 
-            with open(s, 'rb') as f: 
-                a = Animal.objects.filter(animal_id=animal_id)
-                a.photo = f 
-                print "appended photo to animal %s" %animal_id 
-        
+            with open(s, 'rb') as photo: 
+                if Animal.objects.filter(animal_id=animal_id): 
+                    a = Animal.objects.filter(animal_id=animal_id)[0]
+                    imagephoto = ImageFile(photo)
+                    a.photo.save(s, imagephoto, save=True)
+                    print "appended photo to animal %s" %animal_id 
+                else: 
+                    pass
+
         except IOError as e: 
             print "missing " + animal_id

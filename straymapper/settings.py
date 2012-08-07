@@ -32,6 +32,7 @@ DATABASES = {
 }
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3.S3Storage'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '') 
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '') 
 AWS_STORAGE_BUCKET_NAME = 'citypetz'

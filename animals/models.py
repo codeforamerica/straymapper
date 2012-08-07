@@ -26,8 +26,8 @@ class Animal(models.Model):
     description = models.CharField(max_length=255)
     intake_total = models.IntegerField('Intake Total')
     animal_id = models.CharField('Animal ID', max_length=255)
-    photo = models.ImageField(upload_to='photo')
-    thumbnail = ImageSpecField([Adjust(contrast=1.2, sharpness=1.1), ResizeToFill(50, 50)], image_field='photo', format='JPEG', options={'quality':90})
+    photo = models.ImageField(upload_to='photo', blank=True, null=True)
+ 
     geometry = models.PointField(srid=4326)
 
     objects = models.GeoManager()
