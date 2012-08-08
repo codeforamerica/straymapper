@@ -53,7 +53,7 @@
           title: '{{animal.animal_id}}',
           icon: '/static/images/small-marker.png',
           infoWindow: {
-          content: "{% load bootstrap_toolkit %}<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><p align='right'><ul class='thumbnails'><li class='span2'>	{% if animal.photo %} <img src={{animal.thumbnail.url}}>{% else %}<img src={{STATIC_URL}}images/NoImage.jpg>{% endif %}</li></ul>{{animal.animal_id}}</p></td></tr></table>"
+          content: "{% load bootstrap_toolkit %}<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><class='span2'>{% if animal.photo %} <img src={{animal.thumbnail.url}}>{% else %}<img src={{STATIC_URL}}images/NoImage.jpg>{% endif %}<br /><br /> <p align='right'>{{animal.animal_id}}</p></td></tr></table>"
           }
         });
 
@@ -76,14 +76,15 @@
         {% autopaginate alist 5 as paginated_alist %}
             {% for animal in paginated_alist %}
             <tr onclick="openMarkerInfo({{forloop.counter0}}, {{page_obj.number}});"> 
-              <td><ul class="thumbnails">
-                  <li class="span2">    
-		{% if animal.photo %} 
-                <img src="{{animal.photo.url}}">
-		{% else %} 
-		<img src="{{STATIC_URL}}images/NoImage.jpg">
-		{% endif %} 
-                  </li>
+              <td> 
+		<ul class="thumbnails">
+                  <li class="span2">   
+		    {% if animal.photo %} 
+                    <img src="{{animal.thumbnail.url}}">
+		    {% else %} 
+		    <img src="{{STATIC_URL}}images/NoImage.jpg">
+		    {% endif %} 
+		  </li>
                 </ul>
               </td>
               <td>{{animal.description|lower}}<br /> 

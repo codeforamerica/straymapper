@@ -12,7 +12,6 @@ def run():
     
     for row in contents: 
         animal_id = row[3] 
-        print animal_id 
         s = '/home/michelle/work/CfA/Images/' + animal_id + '.jpg' 
 
         try: 
@@ -23,7 +22,7 @@ def run():
                     a.photo.save(s, imagephoto, save=True)
                     print "appended photo to animal %s" %animal_id 
                 else: 
-                    pass
+                    print "have photo but missing record for %s" %animal_id 
 
-        except IOError as e: 
-            print "missing " + animal_id
+        except IOError: 
+            print "missing photo for " + animal_id
