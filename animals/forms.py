@@ -37,5 +37,5 @@ class AnimalSearchForm(forms.Form):
     intake_condition = forms.ChoiceField(required=False,
         choices=intake_condition_choices,
         widget=forms.Select(attrs={'class': 'span2'}))
-    image_option = forms.BooleanField(required=False, 
+    image_option = forms.BooleanField(required=False,
         widget=forms.CheckboxInput())

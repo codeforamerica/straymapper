@@ -11,6 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from animals.models import Animal
 from animals.forms import AnimalSearchForm
 
+
 def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
     # csv.py doesn't do Unicode; encode temporarily as UTF-8:
     csv_reader = csv.reader(utf_8_encoder(unicode_csv_data),
@@ -19,9 +20,11 @@ def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
         # decode UTF-8 back to Unicode, cell by cell:
         yield [unicode(cell, 'utf-8') for cell in row]
 
+
 def utf_8_encoder(unicode_csv_data):
     for line in unicode_csv_data:
         yield line.encode('utf-8')
+
 
 @csrf_exempt
 def process_data(request):
@@ -50,7 +53,8 @@ def process_data(request):
                         a.animal_id = animal_id
                         intake_date = row[0]
                         dt = datetime.strptime(intake_date.strip(), "%m/%d/%y")
-                        a.intake_date = date(year=dt.year, month=dt.month, day=dt.day)
+                        a.intake_date = date(year=dt.year, month=dt.month,
+                            day=dt.day)
                         a.location = location
                         a.intake_condition = row[2]
                         a.animal_type = row[4]
@@ -68,6 +72,7 @@ def process_data(request):
                         a.save()
     return HttpResponse('cool')
 
+
 def index(request, template_name='animals/index.html'):
     context = {}
     alist = Animal.objects.all()
@@ -76,7 +81,7 @@ def index(request, template_name='animals/index.html'):
 
     if request.method == 'POST':
         form = AnimalSearchForm(request.POST)
-        request.session['post_data'] = request.POST.copy() 
+        request.session['post_data'] = request.POST.copy()
     else:
         post_data = request.session.get('post_data', None)
         if post_data:
@@ -110,7 +115,7 @@ def index(request, template_name='animals/index.html'):
                 alist = alist.filter(Q(sex='F') | Q(sex='S'))
     else:
         alist = alist.filter(intake_date__gte=startdate)
-        
+
     context['form'] = form
     context['alist'] = alist
     context['results_count'] = alist.count()
