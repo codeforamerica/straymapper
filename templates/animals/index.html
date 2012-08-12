@@ -4,7 +4,7 @@
 {% load pagination_tags %}
 
 {% block extra_css %}
-  #map{
+#map{
     display: block;
     width: 95%;
     height: 400px;
@@ -12,62 +12,57 @@
     -moz-box-shadow: 0px 5px 20px #ccc;
     -webkit-box-shadow: 0px 5px 20px #ccc;
     box-shadow: 0px 5px 20px #ccc;
-  }
+}
 
-  /* GMaps bug- https://github.com/twitter/bootstrap/issues/2410 */
-  #map img {
+/* GMaps bug- https://github.com/twitter/bootstrap/issues/2410 */
+#map img {
     max-width: none;
-  }
+}
 {% endblock %}
 
 {% block extra_head %}
-  <link rel="stylesheet" href="{{STATIC_URL}}jquery-ui-1.8.21.custom/css/cupertino/jquery-ui-1.8.21.custom.css">
+<link rel="stylesheet" href="{{STATIC_URL}}jquery-ui-1.8.21.custom/css/cupertino/jquery-ui-1.8.21.custom.css">
 
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script type="text/javascript" src="{{STATIC_URL}}jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script>
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-  <script type="text/javascript" src='https://raw.github.com/HPNeo/gmaps/master/gmaps.js'></script>
-  <script type="text/javascript">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src='https://raw.github.com/HPNeo/gmaps/master/gmaps.js'></script>
+<script type="text/javascript">
     var map;
     var prev_mark_num = 0;
 
     function openMarkerInfo(count, page) {
-      map.markers[prev_mark_num]['infoWindow'].close(map.map, map.markers[prev_mark_num]);
-      mark_num = ((page - 1) * 5) + count;
-      map.markers[mark_num]['infoWindow'].open(map.map, map.markers[mark_num]);
-      prev_mark_num = mark_num;
+        map.markers[prev_mark_num]['infowindow'].close(map.map, map.markers[prev_mark_num]);
+        mark_num = ((page - 1) * 5) + count;
+        map.markers[mark_num]['infowindow'].open(map.map, map.markers[mark_num]);
+        prev_mark_num = mark_num;
     }
 
     $(document).ready(function(){
-      map = new GMaps({
-        div: '#map',
-        zoom: 11,
-        lat: 30.264998,
-        lng: -97.691219
-      });
-
-      {% for animal in alist %}
-        map.addMarker({
-          lat: {{animal.geometry.y}},
-          lng: {{animal.geometry.x}},
-          title: '{{animal.animal_id}}',
-          icon: '/static/images/small-marker.png',
-          infoWindow: {
-              content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><class='span2'><br /><br /> <p align='right'>{{animal.animal_id}}</p></td></tr></table>"
-              {% comment %}
-              TODO 51: Load infowindow via ajax
-              content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><class='span2'>{% if animal.photo %} <img src={{animal.thumbnail.url}}>{% else %}<img src={{STATIC_URL}}images/NoImage.jpg>{% endif %}<br /><br /> <p align='right'>{{animal.animal_id}}</p></td></tr></table>"
-              {% endcomment %}
-          }
+        map = new GMaps({
+            div: '#map',
+            zoom: 11,
+            lat: 30.264998,
+            lng: -97.691219
         });
 
-      {% endfor %}
+        {% for animal in alist %}
+            map.addMarker({
+                lat: {{animal.geometry.y}},
+                lng: {{animal.geometry.x}},
+                title: '{{animal.animal_id}}',
+                icon: '/static/images/small-marker.png',
+                infoWindow: {
+                    content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><class='span2'><br /><br /> <p align='right'>{{animal.animal_id}}</p></td></tr></table>"
+                }
+            });
+        {% endfor %}
 
-      $('#id_intake_date_start').datepicker({dateFormat: 'yy-mm-dd'});
-      $('#id_intake_date_end').datepicker({dateFormat: 'yy-mm-dd'});
+        $('#id_intake_date_start').datepicker({dateFormat: 'yy-mm-dd'});
+        $('#id_intake_date_end').datepicker({dateFormat: 'yy-mm-dd'});
 
     });
-  </script>
+</script>
 {% endblock %}
 
 {% block content %}
