@@ -16,11 +16,11 @@
         {% endblock %}
     </style>
 
+    {% block extra_head %}
+    {% endblock %}
     <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    {% block extra_head %}
-    {% endblock %}
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -54,9 +54,9 @@
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" title="Reuniting lost pets with their human companions in Austin, TX." href="{% url animals_index %}">Stray Mapper</a>
+                <a class="brand" title="Reuniting lost pets with their human companions in Austin, TX." href="{% url home %}">Stray Mapper</a>
                 <ul class="nav">
-                    <li><a href="{% url animals_index %}" class="">Home</a></li>
+                    <li><a href="{% url home %}" class="">Home</a></li>
                     <li><a href="">About</a></li>
                     <li><a href=""> --- WORK IN PROGRESS --- </a></li>
                 </ul>
@@ -77,7 +77,7 @@
                 <p>7201 Lavender Loop Austin, TX 78702 </p>
                 <p>Call 3-1-1 for animal issues.</p>
             </div>
-            <br /> 
+            <br />
 
             <div class="span6" style="text-align:right">
                 <p>This is <a href="https://github.com/codeforamerica/straymapper">straymapper</a></p>
@@ -91,6 +91,9 @@
             </div>
         </footer>
     </div> <!-- container -->
+
+    <!-- CfA Banner -->
+    <script src="http://codeforamerica.github.com/cfa_banner/banner.js?type=corner-right&forkUrl=https://github.com/codeforamerica/straymapper" id="cfa_banner_script"></script>
 
     <!-- begin olark code -->
     <script data-cfasync="false" type='text/javascript'>/*{literal}<![CDATA[*/

@@ -32,9 +32,9 @@
     var prev_mark_num = 0;
 
     function openMarkerInfo(count, page) {
-        map.markers[prev_mark_num]['infowindow'].close(map.map, map.markers[prev_mark_num]);
+        map.markers[prev_mark_num]['infoWindow'].close(map.map, map.markers[prev_mark_num]);
         mark_num = ((page - 1) * 5) + count;
-        map.markers[mark_num]['infowindow'].open(map.map, map.markers[mark_num]);
+        map.markers[mark_num]['infoWindow'].open(map.map, map.markers[mark_num]);
         prev_mark_num = mark_num;
     }
 
@@ -66,66 +66,64 @@
 {% endblock %}
 
 {% block content %}
-  <div class="row">
+<div class="row">
     <div class="span3">
-      Search Results
-      <br />
-      <br /> 
-      <table class="table" cellpadding="10">
-        {% autopaginate alist 5 as paginated_alist %}
+        Search Results
+        <br />
+        <br />
+        <table class="table" cellpadding="10">
+            {% autopaginate alist 5 as paginated_alist %}
             {% for animal in paginated_alist %}
-            <tr onclick="openMarkerInfo({{forloop.counter0}}, {{page_obj.number}});"> 
-              <td> 
-		<ul class="thumbnails">
-                  <li class="span2">   
-		    {% if animal.photo %} 
-                    <img src="{{animal.thumbnail.url}}">
-		    {% else %} 
-		    <img src="{{STATIC_URL}}images/NoImage.jpg">
-		    {% endif %} 
-		  </li>
-                </ul>
-              </td>
-              <td>{{animal.description|lower}}<br /> 
-                {{animal.animal_type|lower}}<br /> 
-                {{animal.sex}}<br /> 
-                {{animal.intake_date|date:"n/j/o"}}
-              </td>
-            </tr>
-            </a>
+                <tr onclick="openMarkerInfo({{forloop.counter0}}, {{page_obj.number}});">
+                    <td>
+                        <ul class="thumbnails">
+                            <li class="span2">
+                                {% if animal.photo %}
+                                    <img src="{{animal.thumbnail.url}}">
+                                {% else %}
+                                    <img src="{{STATIC_URL}}images/NoImage.jpg">
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        {{animal.description|lower}}
+                        <br />
+                        {{animal.animal_type|lower}}<br />
+                        {{animal.sex}}
+                        <br />
+                        {{animal.intake_date|date:"n/j/o"}}
+                    </td>
+                </tr>
             {% endfor %}
-      </table>
-      {% paginate using "animals/paginate.html" %}
-    </div>
-    <div class="span9"> 
-    <form class="well form-inline" action="{% url animals_index %}" method="POST">{% csrf_token %} 
-	<table cellpadding="5">
-	  <tr>
-	    <td>Animal Type:</td> 
-	    <td>Sex:</td> 
-	    <td>Intake Date:</td>
-	    <td></td>
-	    <td>Intake Condition</td> 
-	  </tr> 
-	  <tr> 
-	    <td>{{form.animal_type}}</td>
-	    <td>{{form.sex}}</td>
-	    <td>{{form.intake_date_start}}</td>
-	    <td>{{form.intake_date_end}}</td>
-	    <td>{{form.intake_condition}} </td>
-	  </tr>
-	  </table>
-	{{form.image_option}}
-	    <input type="submit" value="Search" class="btn btn-primary"> 
-	    
-      </form>      
-      <div>{{results_count}} animals to display from {{ form.intake_date_start.value }}  to {{ form.intake_date_end.value }}</div>
-      <br /> 
-      <div id="map"></div>
-    </div>
-    <div class="row">
-      <div class="span12">
-      </div>
-    </div>
-    <script src="http://codeforamerica.github.com/cfa_banner/banner.js?type=corner-right&forkUrl=https://github.com/codeforamerica/straymapper" id="cfa_banner_script"></script>
+        </table>
+        {% paginate using "animals/paginate.html" %}
+    </div> <!-- End span3 -->
+
+    <div class="span9">
+        <form class="well form-inline" action="{% url home %}" method="POST">{% csrf_token %}
+            <table cellpadding="5">
+                <tr>
+                    <td>Animal Type:</td>
+                    <td>Sex:</td>
+                    <td>Intake Date:</td>
+                    <td></td>
+                    <td>Intake Condition</td>
+                </tr>
+                <tr>
+                    <td>{{form.animal_type}}</td>
+                    <td>{{form.sex}}</td>
+                    <td>{{form.intake_date_start}}</td>
+                    <td>{{form.intake_date_end}}</td>
+                    <td>{{form.intake_condition}} </td>
+                </tr>
+            </table>
+            {{form.image_option}}
+            <input type="submit" value="Search" class="btn btn-primary">
+        </form>
+        <div>{{results_count}} animals to display from {{ form.intake_date_start.value }}  to {{ form.intake_date_end.value }}</div>
+        <br />
+        <div id="map"></div>
+    </div> <!-- End span9 -->
+</div> <!-- End row -->
 {% endblock %}
