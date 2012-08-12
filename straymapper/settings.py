@@ -160,8 +160,9 @@ INSTALLED_APPS = (
     'bootstrap_toolkit',
     'django_extensions',
     'devtools',
-    'linaro_django_pagination',
+    'devserver',
     'imagekit',
+    'linaro_django_pagination',
     'storages',
 
     'animals',
@@ -195,3 +196,15 @@ LOGGING = {
         },
     }
 }
+
+DEVSERVER_MODULES = (
+    #'devserver.modules.sql.SQLRealTimeModule',
+    #'devserver.modules.sql.SQLSummaryModule',
+    'devserver.modules.profile.ProfileSummaryModule',
+
+    # Modules not enabled by default
+    #'devserver.modules.ajax.AjaxDumpModule',
+    #'devserver.modules.profile.MemoryUseModule',
+    #'devserver.modules.cache.CacheSummaryModule',
+    #'devserver.modules.profile.LineProfilerModule',
+)
