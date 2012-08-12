@@ -117,7 +117,7 @@ def index(request, template_name='animals/index.html'):
         alist = alist.filter(intake_date__gte=startdate)
 
     context['form'] = form
-    context['alist'] = alist
+    context['alist'] = alist.order_by('-intake_date')
     context['results_count'] = alist.count()
     context['startdate'] = startdate
     context['enddate'] = enddate
