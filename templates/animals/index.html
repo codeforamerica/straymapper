@@ -53,7 +53,11 @@
           title: '{{animal.animal_id}}',
           icon: '/static/images/small-marker.png',
           infoWindow: {
-          content: "{% load bootstrap_toolkit %}<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><class='span2'>{% if animal.photo %} <img src={{animal.thumbnail.url}}>{% else %}<img src={{STATIC_URL}}images/NoImage.jpg>{% endif %}<br /><br /> <p align='right'>{{animal.animal_id}}</p></td></tr></table>"
+              content: "{{animal.name|lower}}"
+              {% comment %}
+              TODO 51: Load infowindow via ajax
+              content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><class='span2'>{% if animal.photo %} <img src={{animal.thumbnail.url}}>{% else %}<img src={{STATIC_URL}}images/NoImage.jpg>{% endif %}<br /><br /> <p align='right'>{{animal.animal_id}}</p></td></tr></table>"
+              {% endcomment %}
           }
         });
 
