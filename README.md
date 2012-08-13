@@ -4,7 +4,7 @@ Reunite more stray animals with their human companions
 
 
 ## <a name="screenshot"></a>Screenshot
-![Stray Pet Mapper](https://github.com/codeforamerica/straymapper/raw/master/screenshot.png "Stray Pet Mapper")
+![Stray Pet Mapper](http://i.imgur.com/ivPZR.png "Stray Pet Mapper")
 
 ## <a name="demo"></a>Demo
 You can see a running version of the application at
