@@ -20,6 +20,14 @@ Instructions for creating a development environment for Ubuntu Linux.  This has 
     #Initial libraries needed
     $sudo apt-get install build-essential git-core python-software-properties python-dev python-pip python-virtualenv
 
+    #PIL Dependencies
+    $sudo apt-get install libjpeg8 libjpeg62-dev libfreetype6 libfreetype6-dev
+
+    The following might also be needed:
+    sudo ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib
+    sudo ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib
+    sudo ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib
+
     #SQLite Dependencies
     $sudo apt-get install sqlite3 libsqlite3-dev
 
