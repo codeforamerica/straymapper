@@ -1,5 +1,7 @@
-import os
 import csv
+import os
+import urllib
+
 from django.core.files.storage import default_storage
 from django.core.files.images import ImageFile
 
@@ -14,17 +16,23 @@ def run():
 
     for row in contents:
         animal_id = row[3]
-        s = '/home/michelle/work/CfA/Images/' + animal_id + '.jpg'
+        print animal_id
+        filename = animal_id + '.jpg'
+        s = 'https://citypetz.s3.amazonaws.com/images/' + filename
+        print s
+        temp_photo = urllib.urlretrieve(s, '/tmp/%s' % filename)
 
         try:
-            with open(s, 'rb') as photo:
-                if Animal.objects.filter(animal_id=animal_id):
-                    a = Animal.objects.filter(animal_id=animal_id)[0]
-                    imagephoto = ImageFile(photo)
-                    a.photo.save(s, imagephoto, save=True)
-                    print "appended photo to animal %s" % animal_id
-                else:
-                    print "have photo but missing record for %s" % animal_id
-
+            photo = open(temp_photo[0], 'rb')
+            print photo
+            if Animal.objects.filter(animal_id=animal_id).exists():
+                a = Animal.objects.get(animal_id=animal_id)
+                imagephoto = ImageFile(photo)
+                a.photo.save(filename, imagephoto, save=True)
+                print "appended photo to animal"
+                thumb = a.thumbnail
+                thumb_url = a.thumbnail.url
+            else:
+                print "have photo but missing record for %s" % animal_id
         except IOError:
             print "missing photo for " + animal_id

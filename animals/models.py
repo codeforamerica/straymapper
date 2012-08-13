@@ -28,7 +28,7 @@ class Animal(models.Model):
     description = models.CharField(max_length=255)
     intake_total = models.IntegerField()
     animal_id = models.CharField(max_length=255)
-    photo = models.ImageField(upload_to='photo', blank=True, null=True)
+    photo = models.ImageField(upload_to='straymapper/photos', blank=True, null=True)
     thumbnail = ImageSpecField([Adjust(contrast=1.2, sharpness=1.1),
         ResizeToFill(120, 90)], image_field='photo', format="JPEG",
         options={'quality': 90})
