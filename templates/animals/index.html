@@ -68,9 +68,7 @@
 {% block content %}
 <div class="row">
     <div class="span3">
-        Search Results
-        <br />
-        <br />
+        <h4>Search Results</h4>
         <table class="table" cellpadding="10">
             {% autopaginate alist 5 as paginated_alist %}
             {% for animal in paginated_alist %}
