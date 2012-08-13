@@ -76,7 +76,7 @@ def process_data(request):
 def index(request, template_name='animals/index.html'):
     context = {}
     alist = Animal.objects.all()
-    startdate = datetime.today() - timedelta(days=14)
+    startdate = datetime.today() - timedelta(days=44)
     enddate = datetime.today()
 
     if request.method == 'POST':
@@ -93,28 +93,27 @@ def index(request, template_name='animals/index.html'):
         intake_condition = form.cleaned_data['intake_condition']
         if intake_condition:
             alist = alist.filter(intake_condition=intake_condition)
-        intake_date_start = form.cleaned_data['intake_date_start']
-        intake_date_end = form.cleaned_data['intake_date_end']
-        if intake_date_start and intake_date_end:
-            alist = alist.filter(intake_date__gte=intake_date_start,
-                                 intake_date__lte=intake_date_end)
-        elif intake_date_start:
-            alist = alist.filter(intake_date__gte=intake_date_start)
-            startdate = intake_date_start
-        elif intake_date_end:
-            alist = alist.filter(intake_date__lte=intake_date_end)
-            enddate = intake_date_end
+
         animal_type = form.cleaned_data['animal_type']
         if animal_type:
             alist = alist.filter(animal_type=animal_type)
+
         sex = form.cleaned_data['sex']
         if sex:
             if sex == 'M':
                 alist = alist.filter(Q(sex='M') | Q(sex='N'))
             elif sex == 'F':
                 alist = alist.filter(Q(sex='F') | Q(sex='S'))
-    else:
-        alist = alist.filter(intake_date__gte=startdate)
+
+        intake_date_start = form.cleaned_data['intake_date_start']
+        intake_date_end = form.cleaned_data['intake_date_end']
+        if intake_date_start:
+            startdate = intake_date_start
+        if intake_date_end:
+            enddate = intake_date_end
+
+    alist = alist.filter(intake_date__gte=startdate,
+                         intake_date__lte=enddate)
 
     context['form'] = form
     context['alist'] = alist
