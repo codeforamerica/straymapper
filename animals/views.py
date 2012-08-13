@@ -74,6 +74,7 @@ def process_data(request):
                         a.save()
     return HttpResponse('cool')
 
+
 #@devserver_profile(follow=[])
 def index(request, template_name='animals/index.html'):
     context = {}

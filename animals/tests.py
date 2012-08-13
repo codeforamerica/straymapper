@@ -28,8 +28,8 @@ class AnimalsViewsTestCase(TestCase):
         self.assertContains(resp, "black domestic sh", status_code=200)
 
     def test_date_search(self):
-        resp = self.client.post(reverse('animals_index'),
-            {'intake_date_start': '2012-06-04',
+        resp = self.client.post(reverse('animals_index'), {
+            'intake_date_start': '2012-06-04',
              'intake_date_end': '2012-06-04'})
         self.assertContains(resp, "6/4/2012")
         self.assertContains(resp, "chalupa")
@@ -50,15 +50,14 @@ class AnimalsViewsTestCase(TestCase):
         self.assertContains(resp, "tricolor beagle", status_code=200)
 
     def test_condition_search(self):
-        resp = self.client.post(reverse('animals_index'),{
-            'intake_condition': 'INJURED',
-            'intake_date_start': '2012-05-01'})
+        resp = self.client.post(reverse('animals_index'), {
+            'intake_condition': 'INJURED', 'intake_date_start': '2012-05-01'})
         self.assertContains(resp, "5/30/2012")
         self.assertContains(resp, "bo jangles")
         self.assertContains(resp, "white catahoula", status_code=200)
 
     def test_markers_displayed(self):
-        resp = self.client.post(reverse('animals_index'),
-            {'intake_date_start': '2012-06-04',
-             'intake_date_end': '2012-06-04'})
+        resp = self.client.post(reverse('animals_index'), {
+            'intake_date_start': '2012-06-04',
+            'intake_date_end': '2012-06-04'})
         self.assertContains(resp, "map.addMarker", count=43, status_code=200)
