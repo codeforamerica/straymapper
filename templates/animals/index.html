@@ -78,7 +78,7 @@
                     <td>
                         <ul class="thumbnails">
                             <li class="span2">
-                                {% if animal.photo %}
+                                {% if animal.photo.size > 231 %}
                                     <img src="{{animal.thumbnail.url}}">
                                 {% else %}
                                     <img src="{{STATIC_URL}}images/NoImage.jpg">
