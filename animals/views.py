@@ -107,6 +107,10 @@ def index(request, template_name='animals/index.html'):
             elif sex == 'F':
                 alist = alist.filter(Q(sex='F') | Q(sex='S'))
 
+        has_image = form.cleaned_data['has_image']
+        if has_image:
+            alist = alist.exclude(photo=u'')
+
         intake_date_start = form.cleaned_data['intake_date_start']
         intake_date_end = form.cleaned_data['intake_date_end']
         if intake_date_start:
