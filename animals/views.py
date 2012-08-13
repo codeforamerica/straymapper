@@ -1,12 +1,14 @@
 import csv
 from datetime import datetime, date, timedelta
-from geopy import geocoders
 
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
+
+#from devserver.modules.profile import devserver_profile
+from geopy import geocoders
 
 from animals.models import Animal
 from animals.forms import AnimalSearchForm
@@ -72,7 +74,7 @@ def process_data(request):
                         a.save()
     return HttpResponse('cool')
 
-
+#@devserver_profile(follow=[])
 def index(request, template_name='animals/index.html'):
     context = {}
     alist = Animal.objects.all()
