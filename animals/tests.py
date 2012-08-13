@@ -22,10 +22,10 @@ class AnimalsViewsTestCase(TestCase):
                                status_code=200)
 
     def test_type_search(self):
-        resp = self.client.post(reverse('animals_index'),
-            {'animal_type': 'CAT'})
+        resp = self.client.post(reverse('animals_index'), {
+            'animal_type': 'CAT', 'intake_date_start': '2012-05-01'})
         self.assertContains(resp, "5/31/2012")
-        self.assertContains(resp, "brn tabby domestic sh", status_code=200)
+        self.assertContains(resp, "black domestic sh", status_code=200)
 
     def test_date_search(self):
         resp = self.client.post(reverse('animals_index'),
@@ -43,7 +43,8 @@ class AnimalsViewsTestCase(TestCase):
         self.assertContains(resp, "calico domestic sh", status_code=200)
 
     def test_sex_search(self):
-        resp = self.client.post(reverse('animals_index'), {'sex': 'M'})
+        resp = self.client.post(reverse('animals_index'), {'sex': 'M',
+            'intake_date_start': '2012-05-01'})
         self.assertContains(resp, "5/30/2012")
         self.assertContains(resp, "beagle")
         self.assertContains(resp, "tricolor beagle", status_code=200)
