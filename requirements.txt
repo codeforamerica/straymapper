@@ -6,8 +6,10 @@ amqplib==1.0.2
 anyjson==0.3.3
 billiard==2.7.3.12
 celery==3.0.6
+celery-with-redis==3.0
 django-bootstrap-toolkit==2.5.3
 django-celery==3.0.6
+django-celery-with-redis==3.0
 django-devserver==0.3.2
 django-extensions==0.9
 django-imagekit==2.0.1
@@ -22,6 +24,7 @@ psycopg2==2.4.5
 pycrypto==2.6
 pysqlite==2.6.3
 python-dateutil==1.5
+redis==2.6.2
 sqlparse==0.1.4
 ssh==1.7.14
 wsgiref==0.1.2
