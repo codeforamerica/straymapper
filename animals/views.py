@@ -12,6 +12,7 @@ from geopy import geocoders
 
 from animals.models import Animal
 from animals.forms import AnimalSearchForm
+from animals.tasks import populate
 
 
 def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
@@ -27,9 +28,9 @@ def utf_8_encoder(unicode_csv_data):
     for line in unicode_csv_data:
         yield line.encode('utf-8')
 
-
 @csrf_exempt
 def process_data(request):
+    populate.delay('populate task')
     if request.method == 'POST':
         sender = request.POST.get('sender')
         recipient = request.POST.get('recipient')
