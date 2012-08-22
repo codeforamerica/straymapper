@@ -39,7 +39,7 @@ class AnimalsViewsTestCase(TestCase):
         self.client.post(reverse('animals_index'), {'animal_type': 'CAT',
             'intake_date_start': '2012-05-01'})
         resp = self.client.get('%s?page=2' % reverse('animals_index'))
-        self.assertContains(resp, "6/2/2012", count=5)
+        self.assertContains(resp, "6/2/2012", count=4)
         self.assertContains(resp, "calico domestic sh", status_code=200)
 
     def test_sex_search(self):

@@ -81,6 +81,7 @@ def index(request, template_name='animals/index.html'):
     alist = Animal.objects.all()
     startdate = datetime.today() - timedelta(days=44)
     enddate = datetime.today()
+    sort_order = '-intake_date'
 
     if request.method == 'POST':
         form = AnimalSearchForm(request.POST)
@@ -116,11 +117,12 @@ def index(request, template_name='animals/index.html'):
         intake_date_end = form.cleaned_data['intake_date_end']
         if intake_date_start:
             startdate = intake_date_start
+            sort_order = 'intake_date'
         if intake_date_end:
             enddate = intake_date_end
 
     alist = alist.filter(intake_date__gte=startdate,
-                         intake_date__lte=enddate)
+                         intake_date__lte=enddate).order_by(sort_order)
 
     context['form'] = form
     context['alist'] = alist
