@@ -1,5 +1,5 @@
 import csv
-from datetime import datetime, date, timedelta
+from datetime import datetime, timedelta
 
 from django.db.models import Q
 from django.http import HttpResponse
@@ -8,7 +8,6 @@ from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 
 #from devserver.modules.profile import devserver_profile
-from geopy import geocoders
 
 from animals.models import Animal
 from animals.forms import AnimalSearchForm
@@ -40,10 +39,8 @@ def process_data(request):
             contents = unicode_csv_reader(data_file, dialect='excel',
                 delimiter=',')
             header = contents.next()
-            g = geocoders.Google('AIzaSyAZoNPSlRTETltbmJvgYYqol0SLAVBgKs')
             for row in contents:
-                animal_id = row[3]
-                populate.delay(animal_id)
+                populate.delay(row)
     return HttpResponse('cool')
 
 
