@@ -1,7 +1,9 @@
 import os
 
+import djcelery
 from S3 import CallingFormat
 
+djcelery.setup_loader()
 
 def map_path(directory_name):
     return os.path.join(os.path.dirname(__file__) + '/../',
@@ -31,6 +33,9 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
@@ -160,6 +165,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'devtools',
     'devserver',
+    'djcelery',
     'imagekit',
     'linaro_django_pagination',
     'storages',
