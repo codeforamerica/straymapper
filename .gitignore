@@ -29,5 +29,8 @@ pip-log.txt
 #emacs swap files 
 *~
 
+#local settings
+local_settings.py
+
 #sqlite database
 straymapperdb

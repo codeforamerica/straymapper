@@ -207,3 +207,8 @@ DEVSERVER_MODULES = (
     #'devserver.modules.cache.CacheSummaryModule',
     #'devserver.modules.profile.LineProfilerModule',
 )
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
