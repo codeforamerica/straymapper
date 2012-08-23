@@ -18,6 +18,7 @@ def populate(row):
             (place, point) = g.geocode(location)
         except:
             location_found = False
+            print 'location not found'
         if location_found:
             a = Animal()
             a.animal_id = animal_id
