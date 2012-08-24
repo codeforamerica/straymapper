@@ -2,6 +2,7 @@ Django==1.4
 Fabric==1.4.2
 PIL==1.1.7
 Werkzeug==0.8.3
+dj-database-url==0.2.1
 django-bootstrap-toolkit==2.5.3
 django-devserver==0.3.2
 django-extensions==0.9
