@@ -15,7 +15,7 @@ line-profiler==1.0b3
 pep8==0.6.1
 psycopg2==2.4.5
 pycrypto==2.6
-pysqlite==2.6.3
+#pysqlite==2.6.3
 sqlparse==0.1.4
 ssh==1.7.14
 wsgiref==0.1.2
