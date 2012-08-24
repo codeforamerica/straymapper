@@ -10,6 +10,7 @@ django-imagekit==2.0.1
 django-storages==1.1.4
 geopy==0.94.2
 guppy==0.1.9
+gunicorn==0.14.6
 linaro-django-pagination==2.0.2
 line-profiler==1.0b3
 pep8==0.6.1

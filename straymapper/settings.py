@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'devtools',
     'devserver',
+    'gunicorn',
     'imagekit',
     'linaro_django_pagination',
     'storages',
