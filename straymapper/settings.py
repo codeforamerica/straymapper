@@ -1,5 +1,6 @@
 import os
 
+import dj_database_url
 import djcelery
 from S3 import CallingFormat
 
@@ -17,23 +18,7 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
-        # Or path to database file if using sqlite3.
-        'NAME': map_path('straymapperdb'),
-        # Not used with sqlite3.
-        'USER': '',
-        # Not used with sqlite3.
-        'PASSWORD': '',
-        # Set to empty string for localhost. Not used with sqlite3.
-        'HOST': '',
-        # Set to empty string for default. Not used with sqlite3.
-        'PORT': '',
-    }
-}
-
+DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
@@ -166,6 +151,7 @@ INSTALLED_APPS = (
     'devtools',
     'devserver',
     'djcelery',
+    'gunicorn',
     'imagekit',
     'linaro_django_pagination',
     'storages',
