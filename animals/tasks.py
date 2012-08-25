@@ -10,6 +10,7 @@ g = geocoders.Google('AIzaSyAZoNPSlRTETltbmJvgYYqol0SLAVBgKs')
 @task()
 def populate(row):
     animal_id = row[3]
+    image_updated = True if row[13] == 'New Image Available' else False
     print "starting to process  %s" % animal_id
     if not Animal.objects.filter(animal_id=animal_id).exists():
         location = row[1]
@@ -47,4 +48,9 @@ def populate(row):
             a.photo = ''
             a.save()
             print a
+    elif image_updated:
+        print 'marking %s as having photo updated' % animal_id
+        a = Animal.objects.get(animal_id=animal_id)
+        a.photo_updated = image_updated
+        a.save()
     return 'finished processing %s' % (animal_id)
