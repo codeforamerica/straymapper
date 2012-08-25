@@ -53,8 +53,12 @@ def index(request, template_name='animals/index.html'):
     sort_order = '-intake_date'
 
     if request.method == 'POST':
-        form = AnimalSearchForm(request.POST)
-        request.session['post_data'] = request.POST.copy()
+        if 'search-btn' in request.POST:
+            form = AnimalSearchForm(request.POST)
+            request.session['post_data'] = request.POST.copy()
+        else:
+            form = AnimalSearchForm()
+            request.session['post_data'] = {}
     else:
         post_data = request.session.get('post_data', None)
         if post_data:
