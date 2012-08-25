@@ -17,6 +17,7 @@ class Animal(models.Model):
         (u'U', u'Unknown'),
     )
 
+    animal_id = models.CharField(max_length=255)
     intake_date = models.DateField()
     location = models.CharField(max_length=255)
     intake_condition = models.CharField(max_length=255)
@@ -27,7 +28,10 @@ class Animal(models.Model):
     name = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255)
     intake_total = models.IntegerField()
-    animal_id = models.CharField(max_length=255)
+    outcome_type = models.CharField(max_length=255, blank=True, null=True)
+    outcome_date = models.DateField(blank=True, null=True)
+    transferred_to = models.CharField(max_length=255, blank=True, null=True)
+    photo_updated = models.BooleanField(default=False)
     photo = models.ImageField(upload_to='straymapper/photos', blank=True,
         null=True)
     thumbnail = ImageSpecField([Adjust(contrast=1.2, sharpness=1.1),

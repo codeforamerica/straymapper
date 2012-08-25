@@ -37,6 +37,12 @@ def populate(row):
             a.age = int(float(row[8].replace(',', '')))
             a.description = row[9]
             a.intake_total = 1
+            a.outcome_type = row[10]
+            outcome_date = row[11]
+            if outcome_date:
+                odt = datetime.strptime(intake_date.strip(), "%m/%d/%y")
+                a.outcome_date = date(year=odt.year, month=odt.month, day=odt.day)
+            a.transferred_to = row[12]
             a.geometry = "POINT (%s %s)" % (point[1], point[0])
             a.photo = ''
             a.save()
