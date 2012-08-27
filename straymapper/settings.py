@@ -22,7 +22,7 @@ DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
@@ -72,7 +72,7 @@ STATIC_ROOT = map_path('static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_URL = 'https://s3.amazonaws.com/citypetz/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
