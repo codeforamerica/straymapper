@@ -86,6 +86,10 @@ def index(request, template_name='animals/index.html'):
         if has_image:
             alist = alist.exclude(photo=u'')
 
+        is_adoptable = form.cleaned_data['is_adoptable']
+        if is_adoptable:
+            alist = alist.filter(outcome_type=u'ADOPTION')
+
         intake_date_start = form.cleaned_data['intake_date_start']
         intake_date_end = form.cleaned_data['intake_date_end']
         if intake_date_start:

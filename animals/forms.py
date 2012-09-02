@@ -38,3 +38,4 @@ class AnimalSearchForm(forms.Form):
         choices=intake_condition_choices,
         widget=forms.Select(attrs={'class': 'span2'}))
     has_image = forms.BooleanField(required=False)
+    is_adoptable = forms.BooleanField(required=False)
