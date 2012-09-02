@@ -5,6 +5,7 @@ Werkzeug==0.8.3
 amqplib==1.0.2
 anyjson==0.3.3
 billiard==2.7.3.12
+boto==2.5.2
 celery==3.0.6
 celery-with-redis==3.0
 dj-database-url==0.2.1
@@ -16,15 +17,14 @@ django-extensions==0.9
 django-imagekit==2.0.1
 django-storages==1.1.4
 geopy==0.94.2
+gunicorn==0.14.6
 guppy==0.1.9
 kombu==2.4.0
-gunicorn==0.14.6
 linaro-django-pagination==2.0.2
 line-profiler==1.0b3
 pep8==0.6.1
 psycopg2==2.4.5
 pycrypto==2.6
-#pysqlite==2.6.3
 python-dateutil==1.5
 redis==2.6.2
 requests==0.13.8
