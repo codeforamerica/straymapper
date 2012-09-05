@@ -51,6 +51,7 @@ def index(request, template_name='animals/index.html'):
     startdate = datetime.today() - timedelta(days=44)
     enddate = datetime.today()
     sort_order = '-intake_date'
+    has_image = True
 
     if request.method == 'POST':
         if 'search-btn' in request.POST:
@@ -82,10 +83,6 @@ def index(request, template_name='animals/index.html'):
             elif sex == 'F':
                 alist = alist.filter(Q(sex='F') | Q(sex='S'))
 
-        has_image = form.cleaned_data['has_image']
-        if has_image:
-            alist = alist.exclude(photo=u'')
-
         is_adoptable = form.cleaned_data['is_adoptable']
         if is_adoptable:
             alist = alist.filter(outcome_type=u'ADOPTION')
@@ -97,6 +94,11 @@ def index(request, template_name='animals/index.html'):
             sort_order = 'intake_date'
         if intake_date_end:
             enddate = intake_date_end
+
+        has_image = form.cleaned_data['has_image']
+
+    if has_image:
+        alist = alist.exclude(photo=u'')
 
     alist = alist.filter(intake_date__gte=startdate,
                          intake_date__lte=enddate).order_by(sort_order)
