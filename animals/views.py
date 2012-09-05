@@ -39,8 +39,8 @@ def process_data(request):
             contents = unicode_csv_reader(data_file, dialect='excel',
                 delimiter=',')
             header = contents.next()
-            for row in contents:
-                populate.delay(row)
+            for index, row in enumerate(contents):
+                populate.apply_async(args=[row], countdown=index)
     return HttpResponse('cool')
 
 
