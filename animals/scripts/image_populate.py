@@ -28,7 +28,7 @@ def run():
                     print photo
                     imagephoto = ImageFile(photo)
                     a.photo.save(filename, imagephoto, save=True)
-                    a.photo_updated=False
+                    a.photo_updated = False
                     a.save()
                     print "appended photo to animal"
                     thumb = a.thumbnail

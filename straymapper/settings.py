@@ -6,6 +6,7 @@ from S3 import CallingFormat
 
 djcelery.setup_loader()
 
+
 def map_path(directory_name):
     return os.path.join(os.path.dirname(__file__) + '/../',
             directory_name).replace('\\', '/')
@@ -18,7 +19,10 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-DATABASES = {'default': dj_database_url.config(default='postgis://localhost/straymapperdb')}
+DATABASES = {
+    'default':
+        dj_database_url.config(default='postgis://localhost/straymapperdb')
+}
 BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 

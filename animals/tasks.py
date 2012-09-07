@@ -7,6 +7,7 @@ from animals.models import Animal
 
 g = geocoders.Google('AIzaSyAZoNPSlRTETltbmJvgYYqol0SLAVBgKs')
 
+
 @task()
 def populate(row):
     animal_id = row[3]
@@ -42,7 +43,8 @@ def populate(row):
             outcome_date = row[11]
             if outcome_date:
                 odt = datetime.strptime(intake_date.strip(), "%m/%d/%y")
-                a.outcome_date = date(year=odt.year, month=odt.month, day=odt.day)
+                a.outcome_date = date(year=odt.year, month=odt.month,
+                    day=odt.day)
             a.transferred_to = row[12]
             a.geometry = "POINT (%s %s)" % (point[1], point[0])
             a.photo = ''

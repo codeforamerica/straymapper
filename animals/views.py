@@ -27,6 +27,7 @@ def utf_8_encoder(unicode_csv_data):
     for line in unicode_csv_data:
         yield line.encode('utf-8')
 
+
 @csrf_exempt
 def process_data(request):
     if request.method == 'POST':
@@ -47,7 +48,8 @@ def process_data(request):
 #@devserver_profile(follow=[])
 def index(request, template_name='animals/index.html'):
     context = {}
-    alist = Animal.objects.filter(Q(outcome_type=u'') | Q(outcome_type=u'ADOPTION'))
+    alist = Animal.objects.filter(Q(outcome_type=u'') |
+        Q(outcome_type=u'ADOPTION'))
     startdate = datetime.today() - timedelta(days=44)
     enddate = datetime.today()
     sort_order = '-intake_date'
