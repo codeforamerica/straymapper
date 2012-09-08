@@ -19,10 +19,8 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default':
-        dj_database_url.config(default='postgis://postgres@localhost/straymapperdb')
-}
+DB_CONNECTION_URL = 'postgis://postgres@localhost/straymapperdb'
+DATABASES = {'default': dj_database_url.config(default=DB_CONNECTION_URL)}
 BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
@@ -95,7 +93,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '_!_j&amp;87u0r_ub$8o5ts%*pwvjbcr*oudfq55w^l&amp;t*l8w56mk_'
+SECRET_KEY = '_!_j&amp;87u1r_ub$815ts%*pwvjbcr*oudfq1sipl&amp;t*l8w56mk_'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
