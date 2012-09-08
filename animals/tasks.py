@@ -25,7 +25,7 @@ def populate(row):
             a = Animal()
             a.animal_id = animal_id
             intake_date = row[0]
-            dt = datetime.strptime(intake_date.strip(), "%m/%d/%y")
+            dt = datetime.strptime(intake_date.strip(), "%m/%d/%Y")
             a.intake_date = date(year=dt.year, month=dt.month, day=dt.day)
             a.location = location
             a.intake_condition = row[2]
@@ -42,7 +42,7 @@ def populate(row):
             a.outcome_type = row[10]
             outcome_date = row[11]
             if outcome_date:
-                odt = datetime.strptime(intake_date.strip(), "%m/%d/%y")
+                odt = datetime.strptime(intake_date.strip(), "%m/%d/%Y")
                 a.outcome_date = date(year=odt.year, month=odt.month,
                     day=odt.day)
             a.transferred_to = row[12]
