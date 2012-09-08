@@ -8,8 +8,8 @@ from animals.tasks import populate
 
 
 def run():
-    fn = "straydata-8-26-2012-2-03-42-PM.csv"
-    csv_file = open("%s/../fixtures/%s" % (os.path.dirname(__file__), fn))
+    filename = "straydata-9-8-2012-8-15-52-AM.csv"
+    csv_file = open("%s/../fixtures/%s" % (os.path.dirname(__file__), filename))
     contents = csv.reader(csv_file, dialect='excel', delimiter=',')
     header = contents.next()
     g = geocoders.Google('AIzaSyAZoNPSlRTETltbmJvgYYqol0SLAVBgKs')
