@@ -56,12 +56,12 @@ def index(request, template_name='animals/index.html'):
     has_image = True
 
     if request.method == 'POST':
-        if 'search-btn' in request.POST:
-            form = AnimalSearchForm(request.POST)
-            request.session['post_data'] = request.POST.copy()
-        else:
+        if 'reset-btn' in request.POST:
             form = AnimalSearchForm()
             request.session['post_data'] = {}
+        else:
+            form = AnimalSearchForm(request.POST)
+            request.session['post_data'] = request.POST.copy()
     else:
         post_data = request.session.get('post_data', None)
         if post_data:
