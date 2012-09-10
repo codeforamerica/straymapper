@@ -47,14 +47,16 @@ class AnimalsViewsTestCase(TestCase):
             'intake_date_start': '2012-08-01'})
         self.assertContains(resp, "8/24/2012")
         self.assertContains(resp, "geek")
-        self.assertContains(resp, "black tan chihuahua sh mix", status_code=200)
+        self.assertContains(resp, "black tan chihuahua sh mix",
+            status_code=200)
 
     def test_condition_search(self):
         resp = self.client.post(reverse('animals_index'), {
             'intake_condition': 'INJURED', 'intake_date_start': '2012-08-01'})
         self.assertContains(resp, "8/26/2012")
         self.assertContains(resp, "chuck")
-        self.assertContains(resp, "brown white chihuahua sh mix", status_code=200)
+        self.assertContains(resp, "brown white chihuahua sh mix",
+            status_code=200)
 
     def test_markers_displayed(self):
         resp = self.client.post(reverse('animals_index'), {
