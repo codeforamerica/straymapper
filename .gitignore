@@ -34,3 +34,4 @@ local_settings.py
 
 #sqlite database
 straymapperdb
+celerybeat-schedule.db

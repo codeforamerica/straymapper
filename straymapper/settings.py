@@ -19,10 +19,9 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
+BROKER_BACKEND = 'django'
 DB_CONNECTION_URL = 'postgis://postgres@localhost/straymapperdb'
 DATABASES = {'default': dj_database_url.config(default=DB_CONNECTION_URL)}
-BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
@@ -156,6 +155,7 @@ INSTALLED_APPS = (
     'djcelery',
     'gunicorn',
     'imagekit',
+    'kombu.transport.django',
     'linaro_django_pagination',
     'storages',
 
