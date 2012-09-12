@@ -14,17 +14,7 @@ before_install:
   - sudo -u postgres psql -c "ALTER USER citypetz with encrypted password 'travis-passwd';"
   - sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE straymapperdb TO citypetz;"
   - touch local_settings.py
-  - echo """
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'straymapperdb',
-        'USER': 'citypetz',
-        'PASSWORD': 'travis-passwd',
-        'HOST': 'localhost',
-        'PORT': '5432',
-}
-""" >> local_settings.py
+  - echo "DATABASES = {'default': {'ENGINE': 'django.contrib.gis.db.backends.postgis','NAME': 'straymapperdb','USER': 'citypetz','PASSWORD': 'travis-passwd','HOST': 'localhost','PORT': '5432',}" >> local_settings.py
 install:
   - pip install -q Django==$DJANGO --use-mirrors
   - pip install -r requirements.txt --use-mirrors
