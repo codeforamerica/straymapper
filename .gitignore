@@ -32,6 +32,5 @@ pip-log.txt
 #local settings
 local_settings.py
 
-#sqlite database
-straymapperdb
+#celeryd
 celerybeat-schedule.db
