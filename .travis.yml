@@ -10,7 +10,7 @@ before_install:
   - wget https://docs.djangoproject.com/en/dev/_downloads/create_template_postgis-debian.sh
   - sudo -u postgres bash create_template_postgis-debian.sh
   - sudo -u postgres createuser -d -R -S citypetz
-  - sudo -u postgres createdb -T template_postgis straymapperdba
+  - sudo -u postgres createdb -T template_postgis straymapperdb
   - sudo -u postgres psql -c "ALTER USER citypetz with encrypted password 'travis-passwd';"
   - sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE straymapperdb TO citypetz;"
   - touch local_settings.py
