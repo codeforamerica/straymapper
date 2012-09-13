@@ -8,7 +8,7 @@ Reunite more stray animals with their human companions
 
 ## <a name="demo"></a>Demo
 You can see a running version of the application at
-[http://straymapper.com/][demo].
+[http://stray.citypetz.com/][demo].
 
 [demo]: http://straymapper.com/
 
