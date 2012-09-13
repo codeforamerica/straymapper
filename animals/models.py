@@ -44,3 +44,6 @@ class Animal(models.Model):
 
     def __unicode__(self):
         return self.animal_id
+
+    def is_adoptable(self):
+        return True if self.outcome_type == u'ADOPTION' else False
