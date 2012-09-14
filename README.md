@@ -16,7 +16,7 @@ You can see a running version of the application at
 
 ### Ubuntu Environment
 Instructions for creating a development environment for Ubuntu Linux.  This has been tested using Ubuntu 12.04.
-    
+
     #Initial libraries needed
     $sudo apt-get install build-essential git-core python-software-properties python-dev python-pip python-virtualenv
 
@@ -28,41 +28,26 @@ Instructions for creating a development environment for Ubuntu Linux.  This has 
     sudo ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/
     sudo ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/
 
-    #SQLite Dependencies
-    $sudo apt-get install sqlite3 libsqlite3-dev
-
-    #Spatialite Dependencies
-    $sudo apt-get install libproj-dev proj-bin libgeos-dev libgdal-dev libspatialite3 libspatialite-dev spatialite-bin
-
 ### Mac Environment
-Instructions for creating a development environment on Mac.  This requires that [Homebrew] is installed.     
-    
-    $ brew install sqlite3
-    $ brew isntall geos
+Instructions for creating a development environment on Mac.  This requires that [Homebrew] is installed.
+
+    $ brew install geos
     $ brew install proj
     $ brew install gdal
-    $ brew install libspatialite
-
-**Note: Without Homebrew**
-
-Install the correct libspatialite library from [Spatialite] for your Mac.
 
 [Homebrew]: http://mxcl.github.com/homebrew/
-[Spatialite]: http://www.gaia-gis.it/spatialite-2.3.1/binaries.html
 
 ## <a name="installation"></a>Installation
     git clone git://github.com/codeforamerica/straymapper.git
     cd straymapper
     pip install -r requirements.txt
-    touch straymapperdb
-    spatialite straymapperdb "SELECT InitSpatialMetaData();"
     ./manage.py syncdb
 
 ## <a name="usage"></a>Usage
     ./manage.py runserver
 
 ## <a name="seed"></a>Seed Data
-    ./manage.py runscript animals.scripts.populate
+    ./manage.py loaddata animals/fixtures/animals_testdata.json
 
 ## <a name="contributing"></a>Contributing
 In the spirit of [free software][free-sw], **everyone** is encouraged to help
