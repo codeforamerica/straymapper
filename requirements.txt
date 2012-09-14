@@ -8,7 +8,6 @@ billiard==2.7.3.12
 boto==2.5.2
 celery==3.0.9
 dj-database-url==0.2.1
-django-bootstrap-toolkit==2.5.3
 django-celery==3.0.9
 django-devserver==0.3.2
 django-extensions==0.9

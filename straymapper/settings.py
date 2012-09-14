@@ -146,7 +146,6 @@ INSTALLED_APPS = (
 
     'django.contrib.gis',
 
-    'bootstrap_toolkit',
     'django_extensions',
     'devtools',
     'devserver',
