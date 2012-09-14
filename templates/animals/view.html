@@ -1,8 +1,17 @@
 {% extends "base.html" %}
 
+{% block extra_css %}
+{% endblock %}
+
 {% block extra_head %}
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 {% endblock %}
 
 {% block content %}
+<div class="row">
+    <div class="span12">
+        <h1>{{animal.name}}</h1>
+        <h2>{{animal.description}}</h2>
+        <img src="{{animal.photo.url}}">
+    </div> <!-- End span12 -->
+</div> <!-- End row -->
 {% endblock %}

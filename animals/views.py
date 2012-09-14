@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 from django.db.models import Q
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 
@@ -83,7 +83,9 @@ def index(request, template_name='animals/index.html'):
 
 
 def view(request, aid=None, template_name="animals/view.html"):
-    return render(request, template_name)
+    context = {}
+    context['animal'] = get_object_or_404(Animal, animal_id=aid)
+    return render(request, template_name, context)
 
 @csrf_exempt
 def process_data(request):
