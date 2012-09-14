@@ -18,15 +18,19 @@ You can see a running version of the application at
 Instructions for creating a development environment for Ubuntu Linux.  This has been tested using Ubuntu 12.04.
 
     #Initial libraries needed
-    $sudo apt-get install build-essential git-core python-software-properties python-dev python-pip python-virtualenv
+    $ sudo apt-get install build-essential git-core python-software-properties python-dev python-pip python-virtualenv
 
     #PIL Dependencies
-    $sudo apt-get install build-dep python-imaging
+    $ sudo apt-get install build-dep python-imaging
 
     Also symlink associated libraries:
-    sudo ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/
-    sudo ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/
-    sudo ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/
+    $ sudo ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/
+    $ sudo ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/
+    $ sudo ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/
+
+    # Install PostgreSQL/Postgis
+    $ sudo apt-get install postgresql-9.1
+    $ sudo apt-get install postgresql-9.1-postgis
 
 ### Mac Environment
 Instructions for creating a development environment on Mac.  This requires that [Homebrew] is installed.
@@ -35,7 +39,10 @@ Instructions for creating a development environment on Mac.  This requires that 
     $ brew install proj
     $ brew install gdal
 
+This project uses PostgreSQL/Postgis and the best way to get this setup on the mac is by downloading [Postgres.app]
+
 [Homebrew]: http://mxcl.github.com/homebrew/
+[Postgres.app]: http://postgresapp.com/
 
 ## <a name="installation"></a>Installation
     git clone git://github.com/codeforamerica/straymapper.git
