@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 from django.db.models import Q
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 
@@ -12,23 +12,6 @@ from straymapper.helpers import unicode_csv_reader
 from .models import Animal
 from .forms import AnimalSearchForm
 from .tasks import populate
-
-
-@csrf_exempt
-def process_data(request):
-    if request.method == 'POST':
-        sender = request.POST.get('sender')
-        recipient = request.POST.get('recipient')
-        subject = request.POST.get('subject')
-
-        for key in request.FILES:
-            data_file = request.FILES[key]
-            contents = unicode_csv_reader(data_file, dialect='excel',
-                delimiter=',')
-            header = contents.next()
-            for index, row in enumerate(contents):
-                populate.apply_async(args=[row], countdown=index)
-    return HttpResponse('cool')
 
 
 #@devserver_profile(follow=[])
@@ -96,5 +79,24 @@ def index(request, template_name='animals/index.html'):
     context['results_count'] = alist.count()
     context['startdate'] = startdate
     context['enddate'] = enddate
-    return render_to_response(template_name, context,
-        context_instance=RequestContext(request))
+    return render(request, template_name, context)
+
+
+def view(request, aid=None, template_name="animals/view.html"):
+    return render(request, template_name)
+
+@csrf_exempt
+def process_data(request):
+    if request.method == 'POST':
+        sender = request.POST.get('sender')
+        recipient = request.POST.get('recipient')
+        subject = request.POST.get('subject')
+
+        for key in request.FILES:
+            data_file = request.FILES[key]
+            contents = unicode_csv_reader(data_file, dialect='excel',
+                delimiter=',')
+            header = contents.next()
+            for index, row in enumerate(contents):
+                populate.apply_async(args=[row], countdown=index)
+    return HttpResponse('cool')
