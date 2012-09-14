@@ -4,7 +4,7 @@ Reunite more stray animals with their human companions
 
 
 ## <a name="screenshot"></a>Screenshot
-![Stray Pet Mapper](http://i.imgur.com/ivPZR.png "Stray Pet Mapper")
+![City Petz: Stray Mapper](http://i.imgur.com/ivPZR.png "Stray Mapper")
 
 ## <a name="demo"></a>Demo
 You can see a running version of the application at
