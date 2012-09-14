@@ -14,7 +14,7 @@ django-devserver==0.3.2
 django-extensions==0.9
 django-imagekit==2.0.1
 django-picklefield==0.2.1
-django-storages==1.1.4
+django-storages==1.1.5
 geopy==0.94.2
 gunicorn==0.14.6
 guppy==0.1.9
