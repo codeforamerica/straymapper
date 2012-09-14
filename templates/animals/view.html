@@ -11,7 +11,12 @@
     <div class="span12">
         <h1>{{animal.name}}</h1>
         <h2>{{animal.description}}</h2>
-        <img src="{{animal.photo.url}}">
+        <img src="{{animal.photo.url}}"><br/>
+        {{animal.location}}<br/>
+        {{animal.sex}}<br />
+        {{animal.intake_date|date:"n/j/o"}}<br/>
+        {{animal.age}}<br/>
+        {{animal.intake_condition}}
     </div> <!-- End span12 -->
 </div> <!-- End row -->
 {% endblock %}
