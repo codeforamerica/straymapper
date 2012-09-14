@@ -50,7 +50,7 @@
                 lat: {{animal.geometry.y}},
                 lng: {{animal.geometry.x}},
                 title: '{{animal.animal_id}}',
-                icon: '{{STATIC_URL}}images/small-marker.png',
+                icon: '{{STATIC_URL}}img/small-marker.png',
                 infoWindow: {
                     content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><class='span2'><br /><br /> <p align='right'>{{animal.animal_id}}</p></td></tr></table>"
                 }
@@ -78,7 +78,7 @@
                                 {% if animal.photo.size > 231 %}
                                     <img src="{{animal.thumbnail.url}}">
                                 {% else %}
-                                    <img src="{{STATIC_URL}}images/NoImage.jpg">
+                                    <img src="{{STATIC_URL}}img/NoImage.jpg">
                                 {% endif %}
                                 {% if animal.is_adoptable %}
                                     Adoptable
