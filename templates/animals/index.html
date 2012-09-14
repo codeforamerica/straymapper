@@ -52,7 +52,7 @@
                 title: '{{animal.animal_id}}',
                 icon: '{{STATIC_URL}}img/small-marker.png',
                 infoWindow: {
-                    content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}}<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><class='span2'><br /><br /> <p align='right'>{{animal.animal_id}}</p></td></tr></table>"
+content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.description|lower}}<br>{{animal.sex}}<br />{{animal.location}}<br />age: {{animal.age}} days<br/>intake total: {{animal.intake_total}}<br />intake condition: {{animal.intake_condition|lower}}</p></td><td><class='span2'><p align='right'><img src='{{animal.thumbnail.url}}'><br/>Think this is your pet?<br/> <a href='{% url animals_view animal.animal_id %}'>Take a Closer Look</a></p></td></tr></table>"
                 }
             });
         {% endfor %}
