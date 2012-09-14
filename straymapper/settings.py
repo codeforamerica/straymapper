@@ -10,7 +10,10 @@ def map_path(directory_name):
     return os.path.join(os.path.dirname(__file__) + '/../',
             directory_name).replace('\\', '/')
 
-DEBUG = True
+if os.environ.get('DEBUG', 'True') == 'False':
+    DEBUG = False
+else:
+    DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -23,7 +26,8 @@ DB_CONNECTION_URL = 'postgis://postgres@localhost/straymapperdb'
 DATABASES = {'default': dj_database_url.config(default=DB_CONNECTION_URL)}
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+if not DEBUG:
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = 'citypetz'
@@ -71,7 +75,10 @@ STATIC_ROOT = map_path('static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = 'https://s3.amazonaws.com/citypetz/'
+if DEBUG:
+    STATIC_URL = '/static/'
+else:
+    STATIC_URL = 'https://s3.amazonaws.com/citypetz/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
