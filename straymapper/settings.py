@@ -26,8 +26,6 @@ DB_CONNECTION_URL = 'postgis://postgres@localhost/straymapperdb'
 DATABASES = {'default': dj_database_url.config(default=DB_CONNECTION_URL)}
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-if not DEBUG:
-    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = 'citypetz'
@@ -78,6 +76,7 @@ STATIC_ROOT = map_path('static')
 if DEBUG:
     STATIC_URL = '/static/'
 else:
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     STATIC_URL = 'https://s3.amazonaws.com/citypetz/'
 
 # Additional locations of static files
@@ -154,8 +153,6 @@ INSTALLED_APPS = (
     'django.contrib.gis',
 
     'django_extensions',
-    'devtools',
-    'devserver',
     'djcelery',
     'gunicorn',
     'imagekit',
@@ -195,17 +192,25 @@ LOGGING = {
     }
 }
 
-DEVSERVER_MODULES = (
-    #'devserver.modules.sql.SQLRealTimeModule',
-    #'devserver.modules.sql.SQLSummaryModule',
-    'devserver.modules.profile.ProfileSummaryModule',
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-    # Modules not enabled by default
-    #'devserver.modules.ajax.AjaxDumpModule',
-    #'devserver.modules.profile.MemoryUseModule',
-    #'devserver.modules.cache.CacheSummaryModule',
-    #'devserver.modules.profile.LineProfilerModule',
-)
+    INSTALLED_APPS = INSTALLED_APPS + (
+        'devtools',
+        'devserver',
+    )
+
+    DEVSERVER_MODULES = (
+        #'devserver.modules.sql.SQLRealTimeModule',
+        #'devserver.modules.sql.SQLSummaryModule',
+        'devserver.modules.profile.ProfileSummaryModule',
+
+        # Modules not enabled by default
+        #'devserver.modules.ajax.AjaxDumpModule',
+        #'devserver.modules.profile.MemoryUseModule',
+        #'devserver.modules.cache.CacheSummaryModule',
+        #'devserver.modules.profile.LineProfilerModule',
+    )
 
 try:
     from local_settings import *
