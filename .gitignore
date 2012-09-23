@@ -30,7 +30,7 @@ pip-log.txt
 *~
 
 #local settings
-local_settings.py
+local_settings.*
 
 #celeryd
 celerybeat-schedule.db
