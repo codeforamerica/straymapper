@@ -103,11 +103,11 @@ content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.
         <form class="well form-inline" id="search-form" action="{% url home %}" method="POST">{% csrf_token %}
             <table cellpadding="5">
                 <tr>
-                    <td>Animal Type:</td>
+                    <td>Type:</td>
                     <td>Sex:</td>
-                    <td>Intake Date:</td>
+                    <td>Date Found:</td>
                     <td></td>
-                    <td>Intake Condition</td>
+                    <td>Condition</td>
                 </tr>
                 <tr>
                     <td>{{form.animal_type}}</td>
