@@ -17,5 +17,6 @@ kombu==2.4.7
 linaro-django-pagination==2.0.2
 psycopg2==2.4.5
 python-dateutil==1.5
+pytz==2012d
 requests==0.14.0
 wsgiref==0.1.2
