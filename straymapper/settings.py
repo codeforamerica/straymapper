@@ -10,7 +10,9 @@ def map_path(directory_name):
     return os.path.join(os.path.dirname(__file__) + '/../',
             directory_name).replace('\\', '/')
 
-if os.environ.get('DEBUG', 'True') == 'False':
+# Set Debug = False when running in production or during CI tests
+CI = os.environ.get('CI', 'false')
+if os.environ.get('DEBUG', 'True') == 'False' or CI == 'true':
     DEBUG = False
 else:
     DEBUG = True
