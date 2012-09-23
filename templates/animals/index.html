@@ -68,8 +68,9 @@ content: "<table cellspacing='50%'><tr><td><p>{{animal.name|lower}}<br>{{animal.
 <div class="row">
     <div class="span3">
         <h4>Search Results</h4>
+        {% autopaginate alist 5 as paginated_alist %}
+        {% paginate using "animals/paginate.html" %}
         <table class="table" cellpadding="10">
-            {% autopaginate alist 5 as paginated_alist %}
             {% for animal in paginated_alist %}
                 <tr onclick="openMarkerInfo({{forloop.counter0}}, {{page_obj.number}});">
                     <td>
