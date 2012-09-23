@@ -33,12 +33,6 @@ Instructions for creating a development environment for Ubuntu Linux.  This has 
     $ sudo apt-get install postgresql-9.1-postgis
 
 ### Mac Environment
-Instructions for creating a development environment on Mac.  This requires that [Homebrew] is installed.
-
-    $ brew install geos
-    $ brew install proj
-    $ brew install gdal
-
 This project uses PostgreSQL/Postgis and the best way to get this setup on the mac is by downloading [Postgres.app]
 
 [Homebrew]: http://mxcl.github.com/homebrew/
