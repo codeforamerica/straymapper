@@ -33,10 +33,10 @@ class Animal(models.Model):
     transferred_to = models.CharField(max_length=255, blank=True, null=True)
     photo_updated = models.BooleanField(default=False)
     photo = models.ImageField(upload_to='straymapper/photos', blank=True,
-        null=True)
+                              null=True)
     thumbnail = ImageSpecField([Adjust(contrast=1.2, sharpness=1.1),
-        ResizeToFill(120, 90)], image_field='photo', format="JPEG",
-        options={'quality': 90})
+                               ResizeToFill(120, 90)], image_field='photo',
+                               format="JPEG", options={'quality': 90})
 
     geometry = models.PointField(srid=4326)
 

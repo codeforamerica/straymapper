@@ -7,8 +7,8 @@ djcelery.setup_loader()
 
 
 def map_path(directory_name):
-    return os.path.join(os.path.dirname(__file__) + '/../',
-            directory_name).replace('\\', '/')
+    return os.path.join(
+        os.path.dirname(__file__) + '/../', directory_name).replace('\\', '/')
 
 # Set Debug = False when running in production or during CI tests
 CI = os.environ.get('CI', 'false')
@@ -93,8 +93,8 @@ STATICFILES_DIRS = (
 # various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -103,8 +103,8 @@ SECRET_KEY = '_!_j&amp;87u1r_ub$815ts%*pwvjbcr*oudfq1sipl&amp;t*l8w56mk_'
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.app_directories.Loader'
+    #'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

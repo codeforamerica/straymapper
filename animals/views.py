@@ -17,8 +17,8 @@ from .tasks import populate
 #@devserver_profile(follow=[])
 def index(request, template_name='animals/index.html'):
     context = {}
-    alist = Animal.objects.filter(Q(outcome_type=u'') |
-        Q(outcome_type=u'ADOPTION'))
+    alist = Animal.objects.filter(
+        Q(outcome_type=u'') | Q(outcome_type=u'ADOPTION'))
     startdate = datetime.today() - timedelta(days=44)
     enddate = datetime.today()
     sort_order = '-intake_date'
@@ -87,6 +87,7 @@ def view(request, aid=None, template_name="animals/view.html"):
     context['animal'] = get_object_or_404(Animal, animal_id=aid)
     return render(request, template_name, context)
 
+
 @csrf_exempt
 def process_data(request):
     if request.method == 'POST':
@@ -96,8 +97,8 @@ def process_data(request):
 
         for key in request.FILES:
             data_file = request.FILES[key]
-            contents = unicode_csv_reader(data_file, dialect='excel',
-                delimiter=',')
+            contents = unicode_csv_reader(
+                data_file, dialect='excel', delimiter=',')
             header = contents.next()
             for index, row in enumerate(contents):
                 populate.apply_async(args=[row], countdown=index)

@@ -30,9 +30,7 @@ def populate(row):
             a.location = location
             a.intake_condition = row[2]
             a.animal_type = row[4]
-            sex = {'UNKNOWN': 'U',
-                    'MALE': 'M',
-                    'FEMALE': 'F'}
+            sex = {'UNKNOWN': 'U', 'MALE': 'M', 'FEMALE': 'F'}
             a.sex = sex[row[5]]
             a.spayed = True if row[6] == 'YES' else False
             a.name = row[7]
@@ -44,7 +42,7 @@ def populate(row):
             if outcome_date:
                 odt = datetime.strptime(intake_date.strip(), "%m/%d/%Y")
                 a.outcome_date = date(year=odt.year, month=odt.month,
-                    day=odt.day)
+                                      day=odt.day)
             a.transferred_to = row[12]
             a.geometry = "POINT (%s %s)" % (point[1], point[0])
             a.photo = ''
