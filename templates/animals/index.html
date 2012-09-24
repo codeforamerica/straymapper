@@ -25,6 +25,7 @@
     function openMarkerInfo(count, page) {
         map.markers[prev_mark_num]['infoWindow'].close(map.map, map.markers[prev_mark_num]);
         mark_num = ((page - 1) * 5) + count;
+        map.setCenter(map.markers[mark_num].position.lat(), map.markers[mark_num].position.lng())
         map.markers[mark_num]['infoWindow'].open(map.map, map.markers[mark_num]);
         prev_mark_num = mark_num;
     }
@@ -44,7 +45,7 @@
                 title: '{{animal.animal_id}}',
                 icon: '{{STATIC_URL}}img/small-marker.png',
                 infoWindow: {
-                    content: '{% if not forloop.first %}<a onclick="openMarkerInfo({{forloop.counter}}-2, 1)" href="#">Previous</a>&nbsp{% endif %}{% if not forloop.last %}<a onclick="openMarkerInfo({{forloop.counter}}, 1)" href="#">Next</a>{% endif %}<div style="height: 200px; width: 400px" id="popup_{{animal.id}}"><img src="{{STATIC_URL}}img/loading_big.gif"></div>',
+                    content: '<div style="height: 200px; width: 400px" id="popup_{{animal.id}}"><img src="{{STATIC_URL}}img/loading_big.gif"></div>{% if not forloop.first %}<a onclick="openMarkerInfo({{forloop.counter}}-2, 1)" href="#">Previous</a>&nbsp{% endif %}{% if not forloop.last %}<a onclick="openMarkerInfo({{forloop.counter}}, 1)" href="#">Next</a>{% endif %}',
                     domready: function(){
                         $('#popup_{{animal.id}}').load('{% url animals_popup animal.id%}')
                     }
