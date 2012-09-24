@@ -3,15 +3,7 @@
 {% load pagination_tags %}
 
 {% block extra_css %}
-#map{
-    display: block;
-    width: 95%;
-    height: 400px;
-    margin: 0 auto;
-    -moz-box-shadow: 0px 5px 20px #ccc;
-    -webkit-box-shadow: 0px 5px 20px #ccc;
-    box-shadow: 0px 5px 20px #ccc;
-}
+
 
 /* GMaps bug- https://github.com/twitter/bootstrap/issues/2410 */
 #map img {
@@ -68,9 +60,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
+<div class="row-fluid">
     <div class="span3">
+        <div class="logo">
+            <img src="{{STATIC_URL}}img/straymapper.png">
+        </div>
         <h4>Search Results</h4>
+        <div>{{results_count}} animals to display from {{ startdate }}  to {{ enddate }}</div>
         {% autopaginate alist 5 as paginated_alist %}
         {% paginate using "animals/paginate.html" %}
         <table class="table" cellpadding="10">
@@ -104,31 +100,31 @@
     </div> <!-- End span3 -->
 
     <div class="span9">
-        <form class="well form-inline" id="search-form" action="{% url home %}" method="POST">{% csrf_token %}
-            <table cellpadding="5">
-                <tr>
-                    <td>Type:</td>
-                    <td>Sex:</td>
-                    <td>Date Found:</td>
-                    <td></td>
-                    <td>Condition</td>
-                </tr>
-                <tr>
-                    <td>{{form.animal_type}}</td>
-                    <td>{{form.sex}}</td>
-                    <td>{{form.intake_date_start}}</td>
-                    <td>{{form.intake_date_end}}</td>
-                    <td>{{form.intake_condition}} </td>
-                </tr>
-            </table>
-            {{form.has_image.label}} {{form.has_image}}
-            {{form.is_adoptable.label}} {{form.is_adoptable}}
-            <input type="submit" name="search-btn" value="Search" class="btn btn-primary">
-            <input type="submit" name="reset-btn" value="Reset" class="btn btn-primary">
-        </form>
-        <div>{{results_count}} animals to display from {{ startdate }}  to {{ enddate }}</div>
-        <br />
         <div id="map"></div>
+        <div id="searchmap">
+            <form class="well form-inline" id="search-form" action="{% url home %}" method="POST">{% csrf_token %}
+                <table cellpadding="5">
+                    <tr>
+                        <td>Type:</td>
+                        <td>Sex:</td>
+                        <td>Date Found:</td>
+                        <td></td>
+                        <td>Condition</td>
+                    </tr>
+                    <tr>
+                        <td>{{form.animal_type}}</td>
+                        <td>{{form.sex}}</td>
+                        <td>{{form.intake_date_start}}</td>
+                        <td>{{form.intake_date_end}}</td>
+                        <td>{{form.intake_condition}} </td>
+                    </tr>
+                </table>
+                {{form.has_image.label}} {{form.has_image}}
+                {{form.is_adoptable.label}} {{form.is_adoptable}}
+                <input type="submit" name="search-btn" value="Search" class="btn btn-primary">
+                <input type="submit" name="reset-btn" value="Reset" class="btn btn-primary">
+            </form>
+        </div>
     </div> <!-- End span9 -->
 </div> <!-- End row -->
 {% endblock %}
