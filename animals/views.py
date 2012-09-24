@@ -88,6 +88,12 @@ def view(request, aid=None, template_name="animals/view.html"):
     return render(request, template_name, context)
 
 
+def popup(request, id=None, template_name="animals/popup.html"):
+    context = {}
+    context['animal'] = get_object_or_404(Animal, id=id)
+    return render(request, template_name, context)
+
+
 @csrf_exempt
 def process_data(request):
     if request.method == 'POST':
