@@ -8,10 +8,12 @@
 
 {% block content %}
 <div class="row">
-    <div class="span12">
+    <div class="span8">
         <h1>{{animal.name}}</h1>
         <h2>{{animal.description}}</h2>
         <img src="{{animal.photo.url}}"><br/>
+    </div>
+    <div class="span4">
         {{animal.location}}<br/>
         {{animal.sex}}<br />
         {{animal.intake_date|date:"n/j/o"}}<br/>
@@ -19,7 +21,11 @@
         {{animal.intake_condition}}
         <br/><br/>
         <h3>So is this your animal?</h3>
-        <p>Call or <a onclick="olark('api.box.expand')" href='#'>chat with the animal shelter</a> below and please provide them with the following id, <strong>{{animal.animal_id}}</strong> to speed up process of getting your pet back.<p>
+        <p>
+            Call or <a onclick="olark('api.box.expand')" href='#'>chat with the animal shelter</a> below and please provide them with the following id:<br/>
+            <strong>{{animal.animal_id}}</strong><br/>
+            to speed up process of getting your pet back.
+        <p>
     </div> <!-- End span12 -->
 </div> <!-- End row -->
 {% endblock %}
