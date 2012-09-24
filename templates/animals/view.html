@@ -4,6 +4,8 @@
 {% endblock %}
 
 {% block extra_head %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery.phono.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -22,7 +24,9 @@
         <br/><br/>
         <h3>So is this your animal?</h3>
         <p>
-            Call or <a onclick="olark('api.box.expand')" href='#'>chat with the animal shelter</a> below and please provide them with the following id:<br/>
+            <span id="status"></span><br/>
+            <input id="call" type="button" disabled="true" value="Loading..." />
+            or <a onclick="olark('api.box.expand')" href='#'>chat with the animal shelter</a> below and please provide them with the following id:<br/>
             <strong>{{animal.animal_id}}</strong><br/>
             to speed up process of getting your pet back.
         <p>
@@ -33,4 +37,33 @@
         </p>
     </div> <!-- End span12 -->
 </div> <!-- End row -->
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready(function(){
+      var phono = $.phono({
+        apiKey: "fc45576bf4702da409981955f36d0f12",
+        onReady: function() {
+          $("#call").attr("disabled", false).val("Call");
+        }
+      });
+
+      $("#call").click(function() {
+        $("#call").attr("disabled", true).val("Busy");
+        phono.phone.dial("415-894-0707", {
+          onRing: function() {
+            $("#status").html("Ringing");
+          },
+          onAnswer: function() {
+            $("#status").html("Answered");
+          },
+          onHangup: function() {
+            $("#call").attr("disabled", false).val("Call");
+            $("#status").html("Hangup");
+          }
+        });
+      });
+    })
+</script>
 {% endblock %}
