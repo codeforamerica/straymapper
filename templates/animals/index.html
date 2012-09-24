@@ -44,7 +44,7 @@
                 title: '{{animal.animal_id}}',
                 icon: '{{STATIC_URL}}img/small-marker.png',
                 infoWindow: {
-                    content: '<div style="height: 170px; width: 400px" id="popup_{{animal.id}}"></div>',
+                    content: '{% if not forloop.first %}<a onclick="openMarkerInfo({{forloop.counter}}-2, 1)" href="#">Previous</a>&nbsp{% endif %}{% if not forloop.last %}<a onclick="openMarkerInfo({{forloop.counter}}, 1)" href="#">Next</a>{% endif %}<div style="height: 170px; width: 400px" id="popup_{{animal.id}}"></div>',
                     domready: function(){
                         $('#popup_{{animal.id}}').load('{% url animals_popup animal.id%}')
                     }
