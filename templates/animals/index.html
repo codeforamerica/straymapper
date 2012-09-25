@@ -108,20 +108,15 @@
                     <tr>
                         <td>Type:</td>
                         <td>Sex:</td>
-                        <td>Date Found:</td>
-                        <td></td>
-                        <td>Condition</td>
+                        <td>Missing Since:</td>
                     </tr>
                     <tr>
                         <td>{{form.animal_type}}</td>
                         <td>{{form.sex}}</td>
                         <td>{{form.intake_date_start}}</td>
-                        <td>{{form.intake_date_end}}</td>
-                        <td>{{form.intake_condition}} </td>
                     </tr>
                 </table>
                 {{form.has_image.label}} {{form.has_image}}
-                {{form.is_adoptable.label}} {{form.is_adoptable}}
                 <input type="submit" name="search-btn" value="Search" class="btn btn-primary">
                 <input type="submit" name="reset-btn" value="Reset" class="btn btn-primary">
             </form>
