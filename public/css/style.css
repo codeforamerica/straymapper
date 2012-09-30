@@ -322,11 +322,7 @@ textarea {
     display: none;
 }
 #searchmap {
-    left: 85px;
-    min-width: 400px;
-    position: relative;
-    top: 35px;
-    width: 80%;
+
 }
 .well {
     background-color: rgba(250, 250, 250, 0.8);

@@ -66,8 +66,28 @@
         <div class="logo">
             <a href='/'><img src="{{STATIC_URL}}img/straymapper.png"></a>
         </div>
+        <div id="searchmap">
+            <form class="well form-inline" id="search-form" action="{% url home %}" method="POST">{% csrf_token %}
+                <div class="control-group">
+                    <label class="control-label" for="inputEmail">Type:</label>
+                    <div class="controls">
+                        {{form.animal_type}}
+                    </div>
+                    <label class="control-label" for="inputEmail">Sex:</label>
+                    <div class="controls">
+                            {{form.sex}}
+                    </div>
+                    <label class="control-label" for="inputEmail">Missing Since:</label>
+                    <div class="controls">
+                            {{form.intake_date_start}}
+                        </div>
+                        {{form.has_image.label}} {{form.has_image}}
+                        <input type="submit" name="search-btn" value="Search" class="btn btn-primary">
+                        <input type="submit" name="reset-btn" value="Reset" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
         <h4>Search Results</h4>
-        <div>{{results_count}} animals to display from {{ startdate }}  to {{ enddate }}</div>
         {% autopaginate alist 5 as paginated_alist %}
         {% paginate using "animals/paginate.html" %}
         <table class="table" cellpadding="10">
@@ -102,25 +122,8 @@
 
     <div class="span9">
         <div id="map"></div>
-        <div id="searchmap">
-            <form class="well form-inline" id="search-form" action="{% url home %}" method="POST">{% csrf_token %}
-                <table cellpadding="5">
-                    <tr>
-                        <td>Type:</td>
-                        <td>Sex:</td>
-                        <td>Missing Since:</td>
-                    </tr>
-                    <tr>
-                        <td>{{form.animal_type}}</td>
-                        <td>{{form.sex}}</td>
-                        <td>{{form.intake_date_start}}</td>
-                    </tr>
-                </table>
-                {{form.has_image.label}} {{form.has_image}}
-                <input type="submit" name="search-btn" value="Search" class="btn btn-primary">
-                <input type="submit" name="reset-btn" value="Reset" class="btn btn-primary">
-            </form>
-        </div>
+        <div>{{results_count}} animals to display from {{ startdate }}  to {{ enddate }}</div>
+
     </div> <!-- End span9 -->
 </div> <!-- End row -->
 {% endblock %}
