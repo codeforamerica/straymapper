@@ -47,3 +47,6 @@ class Animal(models.Model):
 
     def is_adoptable(self):
         return True if self.outcome_type == u'ADOPTION' else False
+
+    def is_dog(self):
+        return True if self.animal_type == u'DOG' else False

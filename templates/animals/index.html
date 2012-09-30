@@ -43,7 +43,11 @@
                 lat: {{animal.geometry.y}},
                 lng: {{animal.geometry.x}},
                 title: '{{animal.animal_id}}',
-                icon: '{{STATIC_URL}}img/small-marker.png',
+                {% if animal.is_dog %}
+                    icon: '{{STATIC_URL}}img/small-marker.png',
+                {% else %}
+                    icon: '{{STATIC_URL}}img/small-orange-marker.png',
+                {% endif %}
                 infoWindow: {
                     content: '<div style="height: 200px; width: 400px" id="popup_{{animal.id}}"><img src="{{STATIC_URL}}img/loading_big.gif"></div>{% if not forloop.first %}<a onclick="openMarkerInfo({{forloop.counter}}-2, 1)" href="#">Previous</a>&nbsp{% endif %}{% if not forloop.last %}<a onclick="openMarkerInfo({{forloop.counter}}, 1)" href="#">Next</a>{% endif %}',
                     domready: function(){
