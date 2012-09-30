@@ -19,7 +19,7 @@ def index(request, template_name='animals/index.html'):
     context = {}
     alist = Animal.objects.filter(
         Q(outcome_type=u'') | Q(outcome_type=u'ADOPTION'))
-    startdate = datetime.today() - timedelta(days=44)
+    startdate = datetime.today() - timedelta(days=14)
     enddate = datetime.today()
     sort_order = '-intake_date'
     has_image = True
