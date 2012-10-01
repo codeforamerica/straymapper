@@ -313,7 +313,7 @@ textarea {
     position: absolute;
     display: block;
     width: 70%;
-    height: 900px;
+    height: 1080px;
     min-width: 300px;
 }
 
@@ -322,7 +322,11 @@ textarea {
     display: none;
 }
 #searchmap {
-
+    left: 85px;
+    min-width: 400px;
+    position: relative;
+    top: 35px;
+    width: 80%;
 }
 .well {
     background-color: rgba(250, 250, 250, 0.8);
