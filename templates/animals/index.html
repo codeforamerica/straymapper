@@ -3,8 +3,6 @@
 {% load pagination_tags %}
 
 {% block extra_css %}
-
-
 /* GMaps bug- https://github.com/twitter/bootstrap/issues/2410 */
 #map img {
     max-width: none;
@@ -66,7 +64,7 @@
 
 {% block content %}
 <div class="row-fluid">
-    <div class="span3">
+  <div class="span3">
         <div class="logo">
             <a href='/'><img src="{{STATIC_URL}}img/straymapper.png"></a>
         </div>
@@ -84,14 +82,15 @@
                     <label class="control-label" for="inputEmail">Missing Since:</label>
                     <div class="controls">
                             {{form.intake_date_start}}
-                        </div>
-                        {{form.has_image.label}} {{form.has_image}}
+                    </div>
+                    <div style="padding-top: 5px;">
+                        <span style="font-size: 14px;">Has image</span>{{form.has_image}}
                         <input type="submit" name="search-btn" value="Search" class="btn btn-primary">
-                        <input type="submit" name="reset-btn" value="Reset" class="btn btn-primary">
+                        <input type="submit" name="reset-btn" value="Reset" class="btn btn-link">
+                    </div>
                 </div>
             </form>
         </div>
-        <h4>Search Results</h4>
         {% autopaginate alist 5 as paginated_alist %}
         {% paginate using "animals/paginate.html" %}
         <table class="table" cellpadding="10">
@@ -127,7 +126,6 @@
     <div class="span9">
         <div id="map"></div>
         <div>{{results_count}} animals to display from {{ startdate }}  to {{ enddate }}</div>
-
     </div> <!-- End span9 -->
 </div> <!-- End row -->
 {% endblock %}
