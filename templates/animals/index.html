@@ -105,8 +105,8 @@
     </div> <!-- End span3 -->
 
     <div class="span9">
+        <div>Displaying {{results_count}} animals from {{ startdate }}  to {{ enddate }}</div>
         <div id="map"></div>
-        <div>{{results_count}} animals to display from {{ startdate }}  to {{ enddate }}</div>
         <div id="searchmap">
             <form class="well form-inline" id="search-form" action="{% url home %}" method="POST">{% csrf_token %}
                 <table cellpadding="5">
