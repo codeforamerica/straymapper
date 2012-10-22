@@ -29,7 +29,7 @@ class Report(models.Model):
                                ResizeToFill(120, 90)], image_field='photo',
                                format="JPEG", options={'quality': 90})
 
-    geometry = models.PointField(srid=4326)
+    geometry = models.PointField(srid=4326, null=True, blank=True)
 
     objects = models.GeoManager()
 
