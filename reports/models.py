@@ -1,8 +1,12 @@
+from geopy import geocoders
+
 from django.contrib.gis.db import models
+
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill, Adjust
 
-from .signal_processors import save_point_for_location
+g = geocoders.Google('AIzaSyAZoNPSlRTETltbmJvgYYqol0SLAVBgKs')
+
 
 class Report(models.Model):
     TYPE_CHOICES = (
@@ -37,4 +41,18 @@ class Report(models.Model):
     def __unicode__(self):
         return self.name
 
-models.signals.post_save.connect(save_point_for_location, sender=Report, dispatch_uid="reports.models")
+    def save(self, *args, **kwargs):
+        location_changed = False
+        if self.id:
+            #TODO: copy values in init, since this is an extra db hit
+            orig_self = Report.objects.get(id=self.id)
+            if orig_self.location != self.location:
+                location_changed = True
+        if location_changed or not self.id:
+            try:
+                (place, point) = g.geocode(self.location)
+            except:
+                print "Location not found for report %s" % self.id
+            else:
+                self.geometry = "POINT (%s %s)" % (point[1], point[0])
+        return super(Report, self).save(*args, **kwargs)
