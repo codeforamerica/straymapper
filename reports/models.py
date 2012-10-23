@@ -2,6 +2,7 @@ from django.contrib.gis.db import models
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill, Adjust
 
+from .signal_processors import save_point_for_location
 
 class Report(models.Model):
     TYPE_CHOICES = (
@@ -35,3 +36,5 @@ class Report(models.Model):
 
     def __unicode__(self):
         return self.name
+
+models.signals.post_save.connect(save_point_for_location, sender=Report, dispatch_uid="reports.models")
