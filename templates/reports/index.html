@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 
+{% block extra_head %}
+<link rel="stylesheet" href="{{STATIC_URL}}jquery-ui-1.8.21.custom/css/cupertino/jquery-ui-1.8.21.custom.css">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#id_missing_since').datepicker({dateFormat: 'yy-mm-dd'});
+    });
+</script>
+{% endblock %}
+
 {% block content %}
 <div class="row-fluid">
     <div class="span12">
