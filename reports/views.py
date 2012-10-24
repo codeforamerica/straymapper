@@ -7,7 +7,7 @@ from .models import Report
 def index(request, template_name='reports/index.html'):
     context = {}
     if request.method == 'POST':
-        form = ReportForm(request.POST)
+        form = ReportForm(request.POST, request.FILES)
     else:
         form = ReportForm()
     if form.is_valid():

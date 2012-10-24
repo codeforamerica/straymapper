@@ -19,7 +19,7 @@
             <a href='/'><img src="{{STATIC_URL}}img/straymapper.png"></a>
         </div>
         {{form.errors}}
-        <form id="report-form" action="{% url reports_index %}" method="POST">{% csrf_token %}
+        <form id="report-form" action="{% url reports_index %}" enctype="multipart/form-data" method="POST">{% csrf_token %}
             <div class="row-fluid">
                 <div class="span3">
                     {{form.name.label}}</br>
