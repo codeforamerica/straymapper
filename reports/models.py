@@ -41,6 +41,10 @@ class Report(models.Model):
     def __unicode__(self):
         return self.name
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('reports_view', [str(self.id)])
+
     def save(self, *args, **kwargs):
         location_changed = False
         if self.id:
