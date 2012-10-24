@@ -1,7 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h4>Missing Animal</h4>
-    {{report.name}}</br>
-    {{report.description}}</br>
+<div class="row">
+    <div class="span12">
+        <div class="logo">
+            <a href='/'><img src="{{STATIC_URL}}img/straymapper.png"></a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="span8">
+        <h4>Missing {{report.animal_type|title}}</h4>
+        <h2>{{report.name}}</h2>
+        <img src="{{report.photo.url}}">
+    </div>
+    <div class="span4">
+        <br/><br/><br/>
+        <h6>The following information has been submitted</h6>
+        <p>
+        Missing Since: {{report.missing_since}}<br/>
+        Description: {{report.description}}<br/>
+        Last Seen: {{report.location}}<br/>
+        {{report.sex}}
+        </p>
+        <p>
+        Contact Info:
+        {{report.contact_info}}
+        </p>
+    </div>
+</div>
 {% endblock %}

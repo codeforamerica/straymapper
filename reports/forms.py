@@ -8,5 +8,6 @@ class ReportForm(forms.ModelForm):
         exclude = ('geometry',)
         widgets = {
             'location': forms.TextInput(attrs={'style': 'width:88%'}),
-            'description': forms.Textarea(attrs={'style': 'width:88%', 'rows':'5'})
+            'description': forms.Textarea(attrs={'rows':'7'}),
+            'contact_info': forms.Textarea(attrs={'rows':'7'})
         }
