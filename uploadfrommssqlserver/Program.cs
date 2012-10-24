@@ -206,7 +206,7 @@ namespace StrayMapperExporter
                         .WithCannedACL(S3CannedACL.PublicRead)
                         .WithFilePath(imageFile.FullName)
                         .WithKey("images/" + imageFile.Name);
-                    //the the key will need to be modified to the key/faux-directory you're keeping images in on your hosting client
+                    //the key will need to be modified to the key/faux-directory you're keeping images in on your hosting client
 
                     AmazonS3Client strayMapper = new AmazonS3Client(Credentials.accessKey, Credentials.secretAccessKey);
 
