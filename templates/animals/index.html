@@ -105,7 +105,7 @@
     </div> <!-- End span3 -->
 
     <div class="span9">
-        <div>Displaying {{results_count}} animals from {{ startdate }}  to {{ enddate }}</div>
+        <div align="right">Unable to find your pet below? <a href='{% url reports_index %}'>Report Here</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
         <div id="map"></div>
         <div id="searchmap">
             <form class="well form-inline" id="search-form" action="{% url home %}" method="POST">{% csrf_token %}
@@ -126,6 +126,11 @@
                 <input type="submit" name="reset-btn" value="Reset" class="btn btn-link">
             </form>
         </div>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        Displaying {{results_count}} animals from {{ startdate }}  to {{ enddate }}
     </div> <!-- End span9 -->
 </div> <!-- End row -->
 {% endblock %}
