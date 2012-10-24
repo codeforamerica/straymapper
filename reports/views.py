@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, render
 from .forms import ReportForm
 from .models import Report
 
+
 def index(request, template_name='reports/index.html'):
     context = {}
     if request.method == 'POST':
@@ -15,6 +16,7 @@ def index(request, template_name='reports/index.html'):
         return HttpResponseRedirect(report.get_absolute_url())
     context['form'] = form
     return render(request, template_name, context)
+
 
 def view(request, id=None, template_name='reports/view.html'):
     context = {}
