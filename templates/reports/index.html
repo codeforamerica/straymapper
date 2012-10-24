@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="span12">
+        <div class="logo">
+            <a href='/'><img src="{{STATIC_URL}}img/straymapper.png"></a>
+        </div>
+        {{form.errors}}
+        <form id="report-form" action="{% url reports_index %}" method="POST">{% csrf_token %}
+            <div class="row-fluid">
+                <div class="span3">
+                    {{form.name.label}}</br>
+                    {{form.name}}
+                </div> <!-- End span3 -->
+                <div class="span3">
+                    {{form.missing_since.label}}</br>
+                    {{form.missing_since}}
+                </div> <!-- End span3 -->
+                <div class="span3">
+                    {{form.animal_type.label}}</br>
+                    {{form.animal_type}}
+                </div> <!-- End span3 -->
+            </div/> <!-- End row -->
+
+            <div class="row-fluid">
+                <div class="span6">
+                    {{form.location.label}}</br>
+                    {{form.location}}</br>
+                    {{form.description.label}}</br>
+                    {{form.description}}
+                </div> <!-- End span6 -->
+                <div class="span3">
+                    <div class="row-fluid">
+                        <div class="span3">
+                            {{form.sex.label}}</br>
+                            {{form.sex}}
+                        </div> <!-- End span3 -->
+                    </div> <!-- End row -->
+                    <div class="row-fluid">
+                        <div class="span3">
+                            {{form.photo.label}}</br>
+                            {{form.photo}}
+                        </div> <!-- End span3 -->
+                    </div> <!-- End row -->
+                    <div class="row-fluid">
+                        <div class="span3">
+                            </br></br>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+                        </div> <!-- End span3 -->
+                    </div> <!-- End row -->
+                </div> <!-- End span3 -->
+            </div> <!-- End row -->
+        </form>
+    </div> <!-- End span12 -->
+</div> <!-- End row -->
+{% endblock %}
