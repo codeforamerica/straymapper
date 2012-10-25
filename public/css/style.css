@@ -328,6 +328,9 @@ textarea {
     top: 35px;
     width: 80%;
 }
+#status-bar {
+    padding-top: 920px;
+}
 .well {
     background-color: rgba(250, 250, 250, 0.8);
      -moz-box-shadow: 17px 13px 13px -16px #666666;
