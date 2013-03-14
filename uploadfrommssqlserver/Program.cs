@@ -49,8 +49,7 @@ namespace StrayMapperExporter
         }
 
       static void ToCSV(DataTable table, string delimiter)
-	  //A bunch of string manipulation. This is a modification of code found at http://stackoverflow.com/questions/888181/convert-datatable-to-csv-stream
-        {
+	 {
             try
             {
                 StringBuilder result = new StringBuilder();
@@ -70,10 +69,7 @@ namespace StrayMapperExporter
 
                     foreach (object item in row.ItemArray)
                     {
-                        if (item is System.DBNull)
-                        {
-                            // result.Append(delimiter);
-                        }
+                       
                         if (item is System.DateTime)
                         {
                             string itemAsString = item.ToString();
@@ -308,7 +304,7 @@ namespace StrayMapperExporter
 
             finally
             {
-                Main();
+                
             }
 
         }
